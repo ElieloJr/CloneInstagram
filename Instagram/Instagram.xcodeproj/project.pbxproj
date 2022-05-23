@@ -7,19 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		297B609B283BC8FE00ABC337 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B609A283BC8FE00ABC337 /* FeedViewController.swift */; };
+		297B609D283BC91400ABC337 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B609C283BC91400ABC337 /* FeedViewModel.swift */; };
+		297B60A0283BCA9600ABC337 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B609F283BCA9600ABC337 /* ActivityViewController.swift */; };
+		297B60A2283BCAD400ABC337 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60A1283BCAD400ABC337 /* ActivityViewModel.swift */; };
+		297B60A5283BCB8400ABC337 /* ToMeetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60A4283BCB8400ABC337 /* ToMeetViewController.swift */; };
+		297B60A7283BCBC100ABC337 /* ToMeetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60A6283BCBC100ABC337 /* ToMeetViewModel.swift */; };
+		297B60AA283BCC3400ABC337 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60A9283BCC3400ABC337 /* PerfilViewController.swift */; };
+		297B60AC283BCC6B00ABC337 /* PerfilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60AB283BCC6B00ABC337 /* PerfilViewModel.swift */; };
+		297B60AE283BCD9800ABC337 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60AD283BCD9800ABC337 /* MainTabBarViewController.swift */; };
 		29BB367328382CBD007F72F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367228382CBD007F72F5 /* AppDelegate.swift */; };
 		29BB367528382CBD007F72F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367428382CBD007F72F5 /* SceneDelegate.swift */; };
-		29BB367728382CBD007F72F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367628382CBD007F72F5 /* ViewController.swift */; };
 		29BB367D28382CBD007F72F5 /* Instagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367B28382CBD007F72F5 /* Instagram.xcdatamodeld */; };
 		29BB367F28382CBE007F72F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29BB367E28382CBE007F72F5 /* Assets.xcassets */; };
 		29BB368228382CBE007F72F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29BB368028382CBE007F72F5 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		297B609A283BC8FE00ABC337 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		297B609C283BC91400ABC337 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		297B609F283BCA9600ABC337 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		297B60A1283BCAD400ABC337 /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
+		297B60A4283BCB8400ABC337 /* ToMeetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToMeetViewController.swift; sourceTree = "<group>"; };
+		297B60A6283BCBC100ABC337 /* ToMeetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToMeetViewModel.swift; sourceTree = "<group>"; };
+		297B60A9283BCC3400ABC337 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
+		297B60AB283BCC6B00ABC337 /* PerfilViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewModel.swift; sourceTree = "<group>"; };
+		297B60AD283BCD9800ABC337 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		29BB366F28382CBD007F72F5 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BB367228382CBD007F72F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29BB367428382CBD007F72F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		29BB367628382CBD007F72F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		29BB367C28382CBD007F72F5 /* Instagram.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Instagram.xcdatamodel; sourceTree = "<group>"; };
 		29BB367E28382CBE007F72F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29BB368128382CBE007F72F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +53,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		297B6096283BC85500ABC337 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				297B60AF283BCFFA00ABC337 /* TabBar */,
+				297B6099283BC8A900ABC337 /* Feed */,
+				297B609E283BCA4F00ABC337 /* Activity */,
+				297B60A3283BCB6400ABC337 /* ToMeet */,
+				297B60A8283BCC1D00ABC337 /* Perfil */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		297B6097283BC87000ABC337 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		297B6098283BC87B00ABC337 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		297B6099283BC8A900ABC337 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				297B609A283BC8FE00ABC337 /* FeedViewController.swift */,
+				297B609C283BC91400ABC337 /* FeedViewModel.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		297B609E283BCA4F00ABC337 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				297B609F283BCA9600ABC337 /* ActivityViewController.swift */,
+				297B60A1283BCAD400ABC337 /* ActivityViewModel.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		297B60A3283BCB6400ABC337 /* ToMeet */ = {
+			isa = PBXGroup;
+			children = (
+				297B60A4283BCB8400ABC337 /* ToMeetViewController.swift */,
+				297B60A6283BCBC100ABC337 /* ToMeetViewModel.swift */,
+			);
+			path = ToMeet;
+			sourceTree = "<group>";
+		};
+		297B60A8283BCC1D00ABC337 /* Perfil */ = {
+			isa = PBXGroup;
+			children = (
+				297B60A9283BCC3400ABC337 /* PerfilViewController.swift */,
+				297B60AB283BCC6B00ABC337 /* PerfilViewModel.swift */,
+			);
+			path = Perfil;
+			sourceTree = "<group>";
+		};
+		297B60AF283BCFFA00ABC337 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				297B60AD283BCD9800ABC337 /* MainTabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		29BB366628382CBD007F72F5 = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +142,11 @@
 		29BB367128382CBD007F72F5 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				297B6098283BC87B00ABC337 /* Repository */,
+				297B6097283BC87000ABC337 /* Model */,
+				297B6096283BC85500ABC337 /* Sections */,
 				29BB367228382CBD007F72F5 /* AppDelegate.swift */,
 				29BB367428382CBD007F72F5 /* SceneDelegate.swift */,
-				29BB367628382CBD007F72F5 /* ViewController.swift */,
 				29BB367E28382CBE007F72F5 /* Assets.xcassets */,
 				29BB368028382CBE007F72F5 /* LaunchScreen.storyboard */,
 				29BB368328382CBE007F72F5 /* Info.plist */,
@@ -138,7 +226,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				29BB367D28382CBD007F72F5 /* Instagram.xcdatamodeld in Sources */,
-				29BB367728382CBD007F72F5 /* ViewController.swift in Sources */,
+				297B60A0283BCA9600ABC337 /* ActivityViewController.swift in Sources */,
+				297B60A5283BCB8400ABC337 /* ToMeetViewController.swift in Sources */,
+				297B60A2283BCAD400ABC337 /* ActivityViewModel.swift in Sources */,
+				297B60AA283BCC3400ABC337 /* PerfilViewController.swift in Sources */,
+				297B609D283BC91400ABC337 /* FeedViewModel.swift in Sources */,
+				297B609B283BC8FE00ABC337 /* FeedViewController.swift in Sources */,
+				297B60AC283BCC6B00ABC337 /* PerfilViewModel.swift in Sources */,
+				297B60A7283BCBC100ABC337 /* ToMeetViewModel.swift in Sources */,
+				297B60AE283BCD9800ABC337 /* MainTabBarViewController.swift in Sources */,
 				29BB367328382CBD007F72F5 /* AppDelegate.swift in Sources */,
 				29BB367528382CBD007F72F5 /* SceneDelegate.swift in Sources */,
 			);
