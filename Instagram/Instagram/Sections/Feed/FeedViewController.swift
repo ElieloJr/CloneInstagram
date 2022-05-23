@@ -9,10 +9,17 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
+    lazy var feedTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+        setupConstraints()
     }
     
     func setupView() {
@@ -20,5 +27,30 @@ class FeedViewController: UIViewController {
         
         navigationItem.title = Titles().feedTitle
         self.navigationController?.navigationBar.titleTextAttributes = Titles().feedFont
+        
+        feedTableView.delegate = self
+        feedTableView.dataSource = self
+        
+        view.addSubview(feedTableView)
     }
+    
+    func setupConstraints() {
+        feedTableView.frame = view.bounds
+    }
+}
+
+extension FeedViewController: UITableViewDelegate {
+    
+}
+
+extension FeedViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        return cell
+    }
+    
 }

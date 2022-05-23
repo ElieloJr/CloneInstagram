@@ -125,6 +125,13 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		297B60B2283BF72400ABC337 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		29BB366628382CBD007F72F5 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +151,7 @@
 		29BB367128382CBD007F72F5 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				297B60B2283BF72400ABC337 /* View */,
 				297B6098283BC87B00ABC337 /* Repository */,
 				297B6097283BC87000ABC337 /* Model */,
 				297B6096283BC85500ABC337 /* Sections */,
