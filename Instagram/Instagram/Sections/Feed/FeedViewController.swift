@@ -11,6 +11,14 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.systemBackground
+        
+        setupView()
+    }
+    
+    func setupView() {
+        view.backgroundColor = Colors().defautBackground
+        
+        navigationItem.title = Titles().feedTitle
+        self.navigationController?.navigationBar.titleTextAttributes = Titles().feedFont
     }
 }
