@@ -13,6 +13,8 @@
 		297B60A2283BCAD400ABC337 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60A1283BCAD400ABC337 /* ActivityViewModel.swift */; };
 		297B60A5283BCB8400ABC337 /* ToMeetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60A4283BCB8400ABC337 /* ToMeetViewController.swift */; };
 		297B60A7283BCBC100ABC337 /* ToMeetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60A6283BCBC100ABC337 /* ToMeetViewModel.swift */; };
+		297B60AA283BCC3400ABC337 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60A9283BCC3400ABC337 /* PerfilViewController.swift */; };
+		297B60AC283BCC6B00ABC337 /* PerfilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60AB283BCC6B00ABC337 /* PerfilViewModel.swift */; };
 		29BB367328382CBD007F72F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367228382CBD007F72F5 /* AppDelegate.swift */; };
 		29BB367528382CBD007F72F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367428382CBD007F72F5 /* SceneDelegate.swift */; };
 		29BB367D28382CBD007F72F5 /* Instagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367B28382CBD007F72F5 /* Instagram.xcdatamodeld */; };
@@ -27,6 +29,8 @@
 		297B60A1283BCAD400ABC337 /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		297B60A4283BCB8400ABC337 /* ToMeetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToMeetViewController.swift; sourceTree = "<group>"; };
 		297B60A6283BCBC100ABC337 /* ToMeetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToMeetViewModel.swift; sourceTree = "<group>"; };
+		297B60A9283BCC3400ABC337 /* PerfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
+		297B60AB283BCC6B00ABC337 /* PerfilViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewModel.swift; sourceTree = "<group>"; };
 		29BB366F28382CBD007F72F5 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BB367228382CBD007F72F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29BB367428382CBD007F72F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +57,7 @@
 				297B6099283BC8A900ABC337 /* Feed */,
 				297B609E283BCA4F00ABC337 /* Activity */,
 				297B60A3283BCB6400ABC337 /* ToMeet */,
+				297B60A8283BCC1D00ABC337 /* Perfil */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -96,6 +101,15 @@
 				297B60A6283BCBC100ABC337 /* ToMeetViewModel.swift */,
 			);
 			path = ToMeet;
+			sourceTree = "<group>";
+		};
+		297B60A8283BCC1D00ABC337 /* Perfil */ = {
+			isa = PBXGroup;
+			children = (
+				297B60A9283BCC3400ABC337 /* PerfilViewController.swift */,
+				297B60AB283BCC6B00ABC337 /* PerfilViewModel.swift */,
+			);
+			path = Perfil;
 			sourceTree = "<group>";
 		};
 		29BB366628382CBD007F72F5 = {
@@ -204,8 +218,10 @@
 				297B60A0283BCA9600ABC337 /* ActivityViewController.swift in Sources */,
 				297B60A5283BCB8400ABC337 /* ToMeetViewController.swift in Sources */,
 				297B60A2283BCAD400ABC337 /* ActivityViewModel.swift in Sources */,
+				297B60AA283BCC3400ABC337 /* PerfilViewController.swift in Sources */,
 				297B609D283BC91400ABC337 /* FeedViewModel.swift in Sources */,
 				297B609B283BC8FE00ABC337 /* FeedViewController.swift in Sources */,
+				297B60AC283BCC6B00ABC337 /* PerfilViewModel.swift in Sources */,
 				297B60A7283BCBC100ABC337 /* ToMeetViewModel.swift in Sources */,
 				29BB367328382CBD007F72F5 /* AppDelegate.swift in Sources */,
 				29BB367528382CBD007F72F5 /* SceneDelegate.swift in Sources */,
