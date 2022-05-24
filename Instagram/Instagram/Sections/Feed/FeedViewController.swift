@@ -11,6 +11,8 @@ class FeedViewController: UIViewController {
 
     lazy var feedTableView: UITableView = {
         let tableView = UITableView()
+        let headerTable = StatusHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.width/4))
+        tableView.tableHeaderView = headerTable
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
