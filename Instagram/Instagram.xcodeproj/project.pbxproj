@@ -20,6 +20,7 @@
 		297B60B4283BF84900ABC337 /* StatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60B3283BF84900ABC337 /* StatusHeaderView.swift */; };
 		297B60B6283C036900ABC337 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60B5283C036900ABC337 /* PictureCollectionViewCell.swift */; };
 		297B60B9283D19B900ABC337 /* GradientExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60B8283D19B900ABC337 /* GradientExtensions.swift */; };
+		297B60BE283D43B700ABC337 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60BD283D43B700ABC337 /* PostTableViewCell.swift */; };
 		29BB367328382CBD007F72F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367228382CBD007F72F5 /* AppDelegate.swift */; };
 		29BB367528382CBD007F72F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367428382CBD007F72F5 /* SceneDelegate.swift */; };
 		29BB367D28382CBD007F72F5 /* Instagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367B28382CBD007F72F5 /* Instagram.xcdatamodeld */; };
@@ -41,6 +42,7 @@
 		297B60B3283BF84900ABC337 /* StatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHeaderView.swift; sourceTree = "<group>"; };
 		297B60B5283C036900ABC337 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		297B60B8283D19B900ABC337 /* GradientExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientExtensions.swift; sourceTree = "<group>"; };
+		297B60BD283D43B700ABC337 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		29BB366F28382CBD007F72F5 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BB367228382CBD007F72F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29BB367428382CBD007F72F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,8 +136,9 @@
 		297B60B2283BF72400ABC337 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				297B60B3283BF84900ABC337 /* StatusHeaderView.swift */,
-				297B60B5283C036900ABC337 /* PictureCollectionViewCell.swift */,
+				297B60BB283D436100ABC337 /* StatusHeader */,
+				297B60BC283D437A00ABC337 /* PictureCell */,
+				297B60BA283D42EC00ABC337 /* PostCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,6 +149,30 @@
 				297B60B8283D19B900ABC337 /* GradientExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		297B60BA283D42EC00ABC337 /* PostCell */ = {
+			isa = PBXGroup;
+			children = (
+				297B60BD283D43B700ABC337 /* PostTableViewCell.swift */,
+			);
+			path = PostCell;
+			sourceTree = "<group>";
+		};
+		297B60BB283D436100ABC337 /* StatusHeader */ = {
+			isa = PBXGroup;
+			children = (
+				297B60B3283BF84900ABC337 /* StatusHeaderView.swift */,
+			);
+			path = StatusHeader;
+			sourceTree = "<group>";
+		};
+		297B60BC283D437A00ABC337 /* PictureCell */ = {
+			isa = PBXGroup;
+			children = (
+				297B60B5283C036900ABC337 /* PictureCollectionViewCell.swift */,
+			);
+			path = PictureCell;
 			sourceTree = "<group>";
 		};
 		29BB366628382CBD007F72F5 = {
@@ -255,6 +282,7 @@
 			files = (
 				29BB367D28382CBD007F72F5 /* Instagram.xcdatamodeld in Sources */,
 				297B60B9283D19B900ABC337 /* GradientExtensions.swift in Sources */,
+				297B60BE283D43B700ABC337 /* PostTableViewCell.swift in Sources */,
 				297B60A0283BCA9600ABC337 /* ActivityViewController.swift in Sources */,
 				297B60A5283BCB8400ABC337 /* ToMeetViewController.swift in Sources */,
 				297B60A2283BCAD400ABC337 /* ActivityViewModel.swift in Sources */,
@@ -425,7 +453,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -452,7 +480,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
