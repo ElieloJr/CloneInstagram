@@ -10,7 +10,10 @@ import UIKit
 class Titles {
     
     let feedTitle = "Instagram"
+    let activityTitle = "Atividade"
+    
     let feedFont = [NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 24)!]
+    let defaultFont = [NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 26)!]
 }
 
 class Colors {
