@@ -11,6 +11,9 @@ class ActivityViewController: UIViewController {
     
     private lazy var activityTableView: UITableView = {
         let tableView = UITableView()
+        tableView.showsVerticalScrollIndicator = false
+        tableView.allowsSelection = false
+        tableView.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCell.identifier)
         return tableView
     }()
 
@@ -35,15 +38,18 @@ class ActivityViewController: UIViewController {
 }
 
 extension ActivityViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return view.frame.height/9
+    }
 }
 
 extension ActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCell.identifier, for: indexPath) as? ActivityTableViewCell else { return UITableViewCell() }
+        return cell
     }
 }

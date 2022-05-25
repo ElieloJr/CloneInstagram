@@ -21,6 +21,7 @@
 		297B60B6283C036900ABC337 /* PictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60B5283C036900ABC337 /* PictureCollectionViewCell.swift */; };
 		297B60B9283D19B900ABC337 /* GradientExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60B8283D19B900ABC337 /* GradientExtensions.swift */; };
 		297B60BE283D43B700ABC337 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60BD283D43B700ABC337 /* PostTableViewCell.swift */; };
+		297B60C1283E679500ABC337 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B60C0283E679500ABC337 /* ActivityTableViewCell.swift */; };
 		29BB367328382CBD007F72F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367228382CBD007F72F5 /* AppDelegate.swift */; };
 		29BB367528382CBD007F72F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367428382CBD007F72F5 /* SceneDelegate.swift */; };
 		29BB367D28382CBD007F72F5 /* Instagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367B28382CBD007F72F5 /* Instagram.xcdatamodeld */; };
@@ -43,6 +44,7 @@
 		297B60B5283C036900ABC337 /* PictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		297B60B8283D19B900ABC337 /* GradientExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientExtensions.swift; sourceTree = "<group>"; };
 		297B60BD283D43B700ABC337 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		297B60C0283E679500ABC337 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		29BB366F28382CBD007F72F5 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BB367228382CBD007F72F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29BB367428382CBD007F72F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				297B60BB283D436100ABC337 /* StatusHeader */,
 				297B60BC283D437A00ABC337 /* PictureCell */,
 				297B60BA283D42EC00ABC337 /* PostCell */,
+				297B60BF283E676E00ABC337 /* ActivityCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,6 +176,14 @@
 				297B60B5283C036900ABC337 /* PictureCollectionViewCell.swift */,
 			);
 			path = PictureCell;
+			sourceTree = "<group>";
+		};
+		297B60BF283E676E00ABC337 /* ActivityCell */ = {
+			isa = PBXGroup;
+			children = (
+				297B60C0283E679500ABC337 /* ActivityTableViewCell.swift */,
+			);
+			path = ActivityCell;
 			sourceTree = "<group>";
 		};
 		29BB366628382CBD007F72F5 = {
@@ -288,6 +299,7 @@
 				297B60A2283BCAD400ABC337 /* ActivityViewModel.swift in Sources */,
 				297B60AA283BCC3400ABC337 /* PerfilViewController.swift in Sources */,
 				297B60B4283BF84900ABC337 /* StatusHeaderView.swift in Sources */,
+				297B60C1283E679500ABC337 /* ActivityTableViewCell.swift in Sources */,
 				297B60B1283BD7F300ABC337 /* Utils.swift in Sources */,
 				297B609D283BC91400ABC337 /* FeedViewModel.swift in Sources */,
 				297B609B283BC8FE00ABC337 /* FeedViewController.swift in Sources */,

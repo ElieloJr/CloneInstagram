@@ -18,6 +18,7 @@ class Titles {
 
 class Colors {
     let defautBackground = UIColor.systemBackground
+    let defaultBlue = UIColor(red: 0.00, green: 0.58, blue: 0.96, alpha: 1.00)
     
     // MARK: To gradient
     let gradientTopLeft = UIColor(red: 0.23, green: 0.41, blue: 0.66, alpha: 1.00)
