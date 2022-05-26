@@ -176,6 +176,20 @@ class PerfilViewController: UIViewController {
         return label
     }()
     
+    private lazy var publicationsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: (view.frame.width/3) - 1, height: (view.frame.width/3)-10)
+        
+        let collectionVIew = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionVIew.register(SmallPostCollectionViewCell.self, forCellWithReuseIdentifier: SmallPostCollectionViewCell.identifier)
+        collectionVIew.showsVerticalScrollIndicator = false
+        collectionVIew.translatesAutoresizingMaskIntoConstraints = false
+        return collectionVIew
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -189,11 +203,15 @@ class PerfilViewController: UIViewController {
         navigationItem.title = Titles().userName("nomeDoUser")
         self.navigationController?.navigationBar.titleTextAttributes = Titles().defaultFont
         
+        publicationsCollectionView.delegate = self
+        publicationsCollectionView.dataSource = self
+        
         view.addSubview(pictureView)
         view.addSubview(stackStatistics)
         view.addSubview(userNameLabel)
         view.addSubview(bioLabel)
         view.addSubview(titleCollectionLabel)
+        view.addSubview(publicationsCollectionView)
     }
     
     private func setupConstraints() {
@@ -220,7 +238,27 @@ class PerfilViewController: UIViewController {
         titleCollectionLabel.topAnchor.constraint(equalTo: bioLabel.bottomAnchor, constant: 80).isActive = true
         titleCollectionLabel.leadingAnchor.constraint(equalTo: bioLabel.leadingAnchor).isActive = true
         
+        publicationsCollectionView.topAnchor.constraint(equalTo: titleCollectionLabel.bottomAnchor, constant: 20).isActive = true
+        publicationsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        publicationsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        publicationsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.width/6) - 10).isActive = true
+        
         NSLayoutConstraint.activate(pictureViewConstraints)
         NSLayoutConstraint.activate(stackStatisticsConstraints)
+    }
+}
+
+extension PerfilViewController: UICollectionViewDelegate {
+    
+}
+
+extension PerfilViewController:UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallPostCollectionViewCell.identifier, for: indexPath) as? SmallPostCollectionViewCell else { return UICollectionViewCell() }
+        return cell
     }
 }

@@ -19,10 +19,12 @@ class ToMeetViewController: UIViewController {
     private lazy var toMeetCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (view.frame.width/3) - 6.7, height: (view.frame.width/3)-10)
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: (view.frame.width/3) - 1, height: (view.frame.width/3)-10)
         
         let collectionVIew = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionVIew.register(ToMeetCollectionViewCell.self, forCellWithReuseIdentifier: ToMeetCollectionViewCell.identifier)
+        collectionVIew.register(SmallPostCollectionViewCell.self, forCellWithReuseIdentifier: SmallPostCollectionViewCell.identifier)
         collectionVIew.showsVerticalScrollIndicator = false
         return collectionVIew
     }()
@@ -154,7 +156,7 @@ extension ToMeetViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ToMeetCollectionViewCell.identifier, for: indexPath) as? ToMeetCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallPostCollectionViewCell.identifier, for: indexPath) as? SmallPostCollectionViewCell else { return UICollectionViewCell() }
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(zoomInThePost))
         cell.addGestureRecognizer(longPress)
         return cell

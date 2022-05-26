@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ToMeetCollectionViewCell: UICollectionViewCell {
+class SmallPostCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "ToMeetCollectionViewCell"
     
