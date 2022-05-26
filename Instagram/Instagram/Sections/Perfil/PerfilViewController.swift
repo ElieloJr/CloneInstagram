@@ -105,8 +105,41 @@ class PerfilViewController: UIViewController {
         return stack
     }()
     
+    private lazy var numberFollowingLabel: UILabel = {
+        let label = UILabel()
+        label.text = "100"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var followingLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Seguindo"
+        label.font = label.font.withSize(14)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var followingStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .fill
+        stack.alignment = .fill
+        stack.spacing = 0
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        stack.addArrangedSubview(numberFollowingLabel)
+        stack.addArrangedSubview(followingLabel)
+        
+        numberFollowingLabel.topAnchor.constraint(equalTo: stack.topAnchor).isActive = true
+        followingLabel.topAnchor.constraint(equalTo: numberFollowingLabel.bottomAnchor).isActive = true
+        return stack
+    }()
+    
     private lazy var stackStatistics: UIStackView = {
         let stack = UIStackView()
+//        stack.backgroundColor = .blue
         stack.distribution = .equalCentering
         stack.axis = .horizontal
         stack.alignment = .center
@@ -114,6 +147,7 @@ class PerfilViewController: UIViewController {
         
         stack.addArrangedSubview(publicationsStack)
         stack.addArrangedSubview(followersStack)
+        stack.addArrangedSubview(followingStack)
         return stack
     }()
 
@@ -143,8 +177,8 @@ class PerfilViewController: UIViewController {
         ]
         let stackStatisticsConstraints = [
             stackStatistics.centerYAnchor.constraint(equalTo: pictureView.centerYAnchor),
-            stackStatistics.leadingAnchor.constraint(equalTo: pictureView.trailingAnchor, constant: 4),
-            stackStatistics.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -4),
+            stackStatistics.leadingAnchor.constraint(equalTo: pictureView.trailingAnchor, constant: 14),
+            stackStatistics.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             stackStatistics.heightAnchor.constraint(equalToConstant: view.frame.width/4)
         ]
         
