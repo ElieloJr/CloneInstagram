@@ -73,6 +73,38 @@ class PerfilViewController: UIViewController {
         return stack
     }()
     
+    private lazy var numberFollowersLabel: UILabel = {
+        let label = UILabel()
+        label.text = "100"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var followersLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Seguidores"
+        label.font = label.font.withSize(14)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var followersStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .fill
+        stack.alignment = .fill
+        stack.spacing = 0
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        stack.addArrangedSubview(numberFollowersLabel)
+        stack.addArrangedSubview(followersLabel)
+        
+        numberFollowersLabel.topAnchor.constraint(equalTo: stack.topAnchor).isActive = true
+        followersLabel.topAnchor.constraint(equalTo: numberFollowersLabel.bottomAnchor).isActive = true
+        return stack
+    }()
+    
     private lazy var stackStatistics: UIStackView = {
         let stack = UIStackView()
         stack.distribution = .equalCentering
@@ -81,6 +113,7 @@ class PerfilViewController: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         
         stack.addArrangedSubview(publicationsStack)
+        stack.addArrangedSubview(followersStack)
         return stack
     }()
 
