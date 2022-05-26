@@ -158,6 +158,17 @@ class PerfilViewController: UIViewController {
         return label
     }()
     
+    private lazy var bioLabel: UILabel = {
+        let label = UILabel()
+//        label.backgroundColor = .blue
+        label.text = "Bio"
+        label.numberOfLines = 3
+        label.lineBreakMode = .byWordWrapping
+        label.font = label.font.withSize(18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -174,6 +185,7 @@ class PerfilViewController: UIViewController {
         view.addSubview(pictureView)
         view.addSubview(stackStatistics)
         view.addSubview(userNameLabel)
+        view.addSubview(bioLabel)
     }
     
     private func setupConstraints() {
@@ -192,6 +204,10 @@ class PerfilViewController: UIViewController {
         
         userNameLabel.topAnchor.constraint(equalTo: pictureView.bottomAnchor, constant: 10).isActive = true
         userNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        
+        bioLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 4).isActive = true
+        bioLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor).isActive = true
+        bioLabel.widthAnchor.constraint(equalToConstant: (view.frame.width/2) * 1.9).isActive = true
         
         NSLayoutConstraint.activate(pictureViewConstraints)
         NSLayoutConstraint.activate(stackStatisticsConstraints)
