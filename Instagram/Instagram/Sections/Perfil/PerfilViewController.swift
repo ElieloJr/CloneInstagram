@@ -41,9 +41,46 @@ class PerfilViewController: UIViewController {
         return view
     }()
     
+    private lazy var numberPublicationsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "5"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var publicationsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Publicações"
+        label.font = label.font.withSize(14)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var publicationsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.distribution = .fill
+        stack.alignment = .fill
+        stack.spacing = 0
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        stack.addArrangedSubview(numberPublicationsLabel)
+        stack.addArrangedSubview(publicationsLabel)
+        
+        numberPublicationsLabel.topAnchor.constraint(equalTo: stack.topAnchor).isActive = true
+        publicationsLabel.topAnchor.constraint(equalTo: numberPublicationsLabel.bottomAnchor).isActive = true
+        return stack
+    }()
+    
     private lazy var stackStatistics: UIStackView = {
         let stack = UIStackView()
+        stack.distribution = .equalCentering
+        stack.axis = .horizontal
+        stack.alignment = .center
         stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        stack.addArrangedSubview(publicationsStack)
         return stack
     }()
 
