@@ -9,6 +9,13 @@ import UIKit
 
 class ToMeetViewController: UIViewController {
     
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController()
+        searchController.searchBar.placeholder = "Pesquisar usuário"
+        searchController.searchBar.searchBarStyle = .minimal
+        return searchController
+    }()
+    
     private lazy var toMeetCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -114,6 +121,7 @@ class ToMeetViewController: UIViewController {
         
         navigationItem.title = Titles().toMeetTitle
         self.navigationController?.navigationBar.titleTextAttributes = Titles().defaultFont
+        navigationItem.searchController = searchController
         
         toMeetCollectionView.delegate = self
         toMeetCollectionView.dataSource = self
