@@ -40,6 +40,12 @@ class PerfilViewController: UIViewController {
         NSLayoutConstraint.activate(pictureImageViewConstraints)
         return view
     }()
+    
+    private lazy var stackStatistics: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +61,7 @@ class PerfilViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = Titles().defaultFont
         
         view.addSubview(pictureView)
+        view.addSubview(stackStatistics)
     }
     
     private func setupConstraints() {
@@ -64,7 +71,14 @@ class PerfilViewController: UIViewController {
             pictureView.widthAnchor.constraint(equalToConstant: view.frame.width/3),
             pictureView.heightAnchor.constraint(equalToConstant: view.frame.width/3)
         ]
+        let stackStatisticsConstraints = [
+            stackStatistics.centerYAnchor.constraint(equalTo: pictureView.centerYAnchor),
+            stackStatistics.leadingAnchor.constraint(equalTo: pictureView.trailingAnchor, constant: 4),
+            stackStatistics.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -4),
+            stackStatistics.heightAnchor.constraint(equalToConstant: view.frame.width/4)
+        ]
         
         NSLayoutConstraint.activate(pictureViewConstraints)
+        NSLayoutConstraint.activate(stackStatisticsConstraints)
     }
 }
