@@ -139,7 +139,6 @@ class PerfilViewController: UIViewController {
     
     private lazy var stackStatistics: UIStackView = {
         let stack = UIStackView()
-//        stack.backgroundColor = .blue
         stack.distribution = .equalCentering
         stack.axis = .horizontal
         stack.alignment = .center
@@ -151,6 +150,14 @@ class PerfilViewController: UIViewController {
         return stack
     }()
 
+    private lazy var userNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Nome Escolhido"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -166,6 +173,7 @@ class PerfilViewController: UIViewController {
         
         view.addSubview(pictureView)
         view.addSubview(stackStatistics)
+        view.addSubview(userNameLabel)
     }
     
     private func setupConstraints() {
@@ -181,6 +189,9 @@ class PerfilViewController: UIViewController {
             stackStatistics.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             stackStatistics.heightAnchor.constraint(equalToConstant: view.frame.width/4)
         ]
+        
+        userNameLabel.topAnchor.constraint(equalTo: pictureView.bottomAnchor, constant: 10).isActive = true
+        userNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         
         NSLayoutConstraint.activate(pictureViewConstraints)
         NSLayoutConstraint.activate(stackStatisticsConstraints)
