@@ -11,6 +11,7 @@ class Titles {
     
     let feedTitle = "Instagram"
     let activityTitle = "Atividade"
+    let toMeetTitle = "Conhecer"
     
     let feedFont = [NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 24)!]
     let defaultFont = [NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 26)!]
