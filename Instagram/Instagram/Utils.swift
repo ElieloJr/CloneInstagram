@@ -13,6 +13,10 @@ class Titles {
     let activityTitle = "Atividade"
     let toMeetTitle = "Conhecer"
     
+    func userName(_ name: String) -> String{
+        return name
+    }
+    
     let feedFont = [NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 24)!]
     let defaultFont = [NSAttributedString.Key.font: UIFont(name: "Noteworthy-Bold", size: 26)!]
 }

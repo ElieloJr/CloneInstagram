@@ -11,6 +11,9 @@ class PerfilViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.systemBackground
+        view.backgroundColor = Colors().defautBackground
+        
+        navigationItem.title = Titles().userName("nomeDoUser")
+        self.navigationController?.navigationBar.titleTextAttributes = Titles().defaultFont
     }
 }
