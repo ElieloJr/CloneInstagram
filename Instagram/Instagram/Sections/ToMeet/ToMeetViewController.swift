@@ -29,6 +29,14 @@ class ToMeetViewController: UIViewController {
         return collectionVIew
     }()
     
+    private lazy var blurView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .label
+        view.layer.opacity = 0.2
+        view.isHidden = true
+        return view
+    }()
+    
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.text = "NomeUsuário"
@@ -129,6 +137,7 @@ class ToMeetViewController: UIViewController {
         toMeetCollectionView.dataSource = self
         
         view.addSubview(toMeetCollectionView)
+        view.addSubview(blurView)
         view.addSubview(postView)
     }
     
@@ -141,6 +150,8 @@ class ToMeetViewController: UIViewController {
             postView.widthAnchor.constraint(equalToConstant: (view.frame.width/2) * 1.8),
             postView.heightAnchor.constraint(equalToConstant: (view.frame.width/6) * 5)
         ]
+        
+        blurView.frame = view.bounds
         
         NSLayoutConstraint.activate(postViewConstraints)
     }
@@ -172,9 +183,11 @@ extension ToMeetViewController {
             else { return }
             print(selectedCell.row)
             // TODO: Colocar aqui a imagem
+            blurView.isHidden = false
             postView.isHidden = false
             
         case .ended:
+            blurView.isHidden = true
             postView.isHidden = true
             
         case .possible, .changed, .cancelled, .failed: break

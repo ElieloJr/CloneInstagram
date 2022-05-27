@@ -190,6 +190,89 @@ class PerfilViewController: UIViewController {
         return collectionVIew
     }()
     
+    private lazy var blurView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .label
+        view.layer.opacity = 0.2
+        view.isHidden = true
+        return view
+    }()
+    
+    private lazy var zoomUserNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "NomeUsuário"
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var pictureUserImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .gray
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 18
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var pictureUserView: UIView = {
+        let view = UIView()
+        view.layer.borderColor = UIColor.red.cgColor
+        view.layer.borderWidth = 2
+        view.layer.cornerRadius = 20
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(pictureUserImageView)
+        
+        pictureUserImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 4).isActive = true
+        pictureUserImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 4).isActive = true
+        pictureUserImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -4).isActive = true
+        pictureUserImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -4).isActive = true
+        
+        return view
+    }()
+    
+    private lazy var postImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .lightGray
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        imageView.layer.cornerRadius = 10
+        return imageView
+    }()
+    
+    private lazy var zoomPostView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemBackground
+        view.isHidden = true
+        view.layer.cornerRadius = 20
+        view.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.label.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(pictureUserView)
+        view.addSubview(zoomUserNameLabel)
+        view.addSubview(postImageView)
+        
+        pictureUserView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+        pictureUserView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        pictureUserView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        pictureUserView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        zoomUserNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor).isActive = true
+        zoomUserNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10).isActive = true
+            
+        postImageView.topAnchor.constraint(equalTo: pictureUserView.bottomAnchor, constant: 6).isActive = true
+        postImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        postImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        postImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -212,6 +295,8 @@ class PerfilViewController: UIViewController {
         view.addSubview(bioLabel)
         view.addSubview(titleCollectionLabel)
         view.addSubview(publicationsCollectionView)
+        view.addSubview(blurView)
+        view.addSubview(zoomPostView)
     }
     
     private func setupConstraints() {
@@ -243,6 +328,13 @@ class PerfilViewController: UIViewController {
         publicationsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         publicationsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.width/6) - 10).isActive = true
         
+        blurView.frame = view.bounds
+        
+        zoomPostView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        zoomPostView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        zoomPostView.widthAnchor.constraint(equalToConstant: (view.frame.width/2) * 1.8).isActive = true
+        zoomPostView.heightAnchor.constraint(equalToConstant: (view.frame.width/6) * 5).isActive = true
+        
         NSLayoutConstraint.activate(pictureViewConstraints)
         NSLayoutConstraint.activate(stackStatisticsConstraints)
     }
@@ -259,6 +351,30 @@ extension PerfilViewController:UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallPostCollectionViewCell.identifier, for: indexPath) as? SmallPostCollectionViewCell else { return UICollectionViewCell() }
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(zoomInThePost))
+        cell.addGestureRecognizer(longPress)
         return cell
+    }
+}
+
+extension PerfilViewController {
+    @objc func zoomInThePost(_ gesture: UIGestureRecognizer) {
+        
+        switch(gesture.state) {
+        case .began:
+            guard let selectedCell = publicationsCollectionView.indexPathForItem(at: gesture.location(in: publicationsCollectionView))
+            else { return }
+            print(selectedCell.row)
+            // TODO: Colocar aqui a imagem
+            blurView.isHidden = false
+            zoomPostView.isHidden = false
+            
+        case .ended:
+            blurView.isHidden = true
+            zoomPostView.isHidden = true
+            
+        case .possible, .changed, .cancelled, .failed: break
+        @unknown default: break
+        }
     }
 }
