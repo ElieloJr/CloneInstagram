@@ -63,32 +63,22 @@ class ActivityTableViewCell: UITableViewCell {
     }
     
     private func setupConstraints() {
-        let userImageViewConstraints = [
-            userImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            userImageView.widthAnchor.constraint(equalToConstant: (contentView.frame.width/4)),
-            userImageView.heightAnchor.constraint(equalToConstant: (contentView.frame.width/4))
-        ]
-        let userNameLabelConstraints = [
-            userNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor, constant: -10),
-            userNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 10)
-        ]
-        let messageLabelConstraints = [
-            messageLabel.topAnchor.constraint(equalTo: userNameLabel.topAnchor),
-            messageLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor),
-            messageLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width/3) * 2)
-        ]
-        let followButtonConstraints = [
-            followButton.topAnchor.constraint(equalTo: messageLabel.topAnchor),
-            followButton.leadingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 10),
-            followButton.widthAnchor.constraint(equalToConstant: (contentView.frame.width/4) * 1.2),
-            followButton.heightAnchor.constraint(equalToConstant: 35)
-        ]
-        
-        NSLayoutConstraint.activate(userImageViewConstraints)
-        NSLayoutConstraint.activate(userNameLabelConstraints)
-        NSLayoutConstraint.activate(messageLabelConstraints)
-        NSLayoutConstraint.activate(followButtonConstraints)
+        userImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        userImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+        userImageView.widthAnchor.constraint(equalToConstant: (contentView.frame.width/4)).isActive = true
+        userImageView.heightAnchor.constraint(equalToConstant: (contentView.frame.width/4)).isActive = true
+            
+        userNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor, constant: -10).isActive = true
+        userNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 10).isActive = true
+            
+        messageLabel.topAnchor.constraint(equalTo: userNameLabel.topAnchor).isActive = true
+        messageLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor).isActive = true
+        messageLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width/3) * 2).isActive = true
+            
+        followButton.topAnchor.constraint(equalTo: messageLabel.topAnchor).isActive = true
+        followButton.leadingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 10).isActive = true
+        followButton.widthAnchor.constraint(equalToConstant: (contentView.frame.width/4) * 1.2).isActive = true
+        followButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
     @objc func setStatsOfFollow() {
@@ -104,10 +94,9 @@ class ActivityTableViewCell: UITableViewCell {
             followButton.setTitle("Seguir", for: .normal)
             followButton.setTitleColor(.white, for: .normal)
         }
-        
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
