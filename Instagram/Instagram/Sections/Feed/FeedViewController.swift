@@ -15,7 +15,6 @@ class FeedViewController: UIViewController {
         tableView.tableHeaderView = headerTable
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         tableView.showsVerticalScrollIndicator = false
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     

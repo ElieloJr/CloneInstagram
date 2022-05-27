@@ -33,6 +33,7 @@ class ActivityViewController: UIViewController {
         activityTableView.dataSource = self
         
         view.addSubview(activityTableView)
+        
         activityTableView.frame = view.bounds
     }
 }

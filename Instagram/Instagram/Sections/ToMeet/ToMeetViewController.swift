@@ -65,13 +65,10 @@ class ToMeetViewController: UIViewController {
         
         view.addSubview(pictureUserImageView)
         
-        let pictureUserImageViewConstraints = [
-            pictureUserImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 4),
-            pictureUserImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 4),
-            pictureUserImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -4),
-            pictureUserImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -4)
-        ]
-        NSLayoutConstraint.activate(pictureUserImageViewConstraints)
+        pictureUserImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 4).isActive = true
+        pictureUserImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 4).isActive = true
+        pictureUserImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -4).isActive = true
+        pictureUserImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -4).isActive = true
         
         return view
     }()
@@ -96,26 +93,19 @@ class ToMeetViewController: UIViewController {
         view.addSubview(userNameLabel)
         view.addSubview(postImageView)
         
-        let pictureUserViewConstraints = [
-            pictureUserView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            pictureUserView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            pictureUserView.widthAnchor.constraint(equalToConstant: 40),
-            pictureUserView.heightAnchor.constraint(equalToConstant: 40)
-        ]
-        let userNameLabelConstraints = [
-            userNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor),
-            userNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10)
-        ]
-        let postImageViewConstraints = [
-            postImageView.topAnchor.constraint(equalTo: pictureUserView.bottomAnchor, constant: 6),
-            postImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            postImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            postImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ]
+        pictureUserView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+        pictureUserView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        pictureUserView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        pictureUserView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            
+        userNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor).isActive = true
+        userNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10).isActive = true
+            
+        postImageView.topAnchor.constraint(equalTo: pictureUserView.bottomAnchor, constant: 6).isActive = true
+        postImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        postImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        postImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        NSLayoutConstraint.activate(pictureUserViewConstraints)
-        NSLayoutConstraint.activate(userNameLabelConstraints)
-        NSLayoutConstraint.activate(postImageViewConstraints)
         return view
     }()
 
@@ -144,16 +134,12 @@ class ToMeetViewController: UIViewController {
     private func setupConstraints() {
         toMeetCollectionView.frame = view.bounds
         
-        let postViewConstraints = [
-            postView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            postView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            postView.widthAnchor.constraint(equalToConstant: (view.frame.width/2) * 1.8),
-            postView.heightAnchor.constraint(equalToConstant: (view.frame.width/6) * 5)
-        ]
+        postView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        postView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        postView.widthAnchor.constraint(equalToConstant: (view.frame.width/2) * 1.8).isActive = true
+        postView.heightAnchor.constraint(equalToConstant: (view.frame.width/6) * 5).isActive = true
         
         blurView.frame = view.bounds
-        
-        NSLayoutConstraint.activate(postViewConstraints)
     }
 }
 
