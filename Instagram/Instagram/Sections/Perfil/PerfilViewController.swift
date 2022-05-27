@@ -30,14 +30,11 @@ class PerfilViewController: UIViewController {
         
         view.addSubview(pictureImageView)
         
-        let pictureImageViewConstraints = [
-            pictureImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 7),
-            pictureImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 7),
-            pictureImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -7),
-            pictureImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -7)
-        ]
+        pictureImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 7).isActive = true
+        pictureImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 7).isActive = true
+        pictureImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -7).isActive = true
+        pictureImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -7).isActive = true
         
-        NSLayoutConstraint.activate(pictureImageViewConstraints)
         return view
     }()
     
@@ -102,6 +99,7 @@ class PerfilViewController: UIViewController {
         
         numberFollowersLabel.topAnchor.constraint(equalTo: stack.topAnchor).isActive = true
         followersLabel.topAnchor.constraint(equalTo: numberFollowersLabel.bottomAnchor).isActive = true
+        
         return stack
     }()
     
@@ -300,18 +298,15 @@ class PerfilViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        let pictureViewConstraints = [
-            pictureView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            pictureView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 6),
-            pictureView.widthAnchor.constraint(equalToConstant: view.frame.width/3),
-            pictureView.heightAnchor.constraint(equalToConstant: view.frame.width/3)
-        ]
-        let stackStatisticsConstraints = [
-            stackStatistics.centerYAnchor.constraint(equalTo: pictureView.centerYAnchor),
-            stackStatistics.leadingAnchor.constraint(equalTo: pictureView.trailingAnchor, constant: 14),
-            stackStatistics.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            stackStatistics.heightAnchor.constraint(equalToConstant: view.frame.width/4)
-        ]
+        pictureView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+        pictureView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 6).isActive = true
+        pictureView.widthAnchor.constraint(equalToConstant: view.frame.width/3).isActive = true
+        pictureView.heightAnchor.constraint(equalToConstant: view.frame.width/3).isActive = true
+        
+        stackStatistics.centerYAnchor.constraint(equalTo: pictureView.centerYAnchor).isActive = true
+        stackStatistics.leadingAnchor.constraint(equalTo: pictureView.trailingAnchor, constant: 14).isActive = true
+        stackStatistics.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        stackStatistics.heightAnchor.constraint(equalToConstant: view.frame.width/4).isActive = true
         
         userNameLabel.topAnchor.constraint(equalTo: pictureView.bottomAnchor, constant: 10).isActive = true
         userNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
@@ -334,9 +329,6 @@ class PerfilViewController: UIViewController {
         zoomPostView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         zoomPostView.widthAnchor.constraint(equalToConstant: (view.frame.width/2) * 1.8).isActive = true
         zoomPostView.heightAnchor.constraint(equalToConstant: (view.frame.width/6) * 5).isActive = true
-        
-        NSLayoutConstraint.activate(pictureViewConstraints)
-        NSLayoutConstraint.activate(stackStatisticsConstraints)
     }
 }
 
