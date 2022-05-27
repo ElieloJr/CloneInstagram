@@ -28,6 +28,7 @@ class StatusHeaderView: UIView {
         statusCollectionVIew.dataSource = self
         
         addSubview(statusCollectionVIew)
+        
         statusCollectionVIew.frame = bounds
     }
     
@@ -49,6 +50,4 @@ extension StatusHeaderView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PictureCollectionViewCell.identifier, for: indexPath) as? PictureCollectionViewCell else { return UICollectionViewCell() }
         return cell
     }
-    
-    
 }

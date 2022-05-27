@@ -40,13 +40,10 @@ class PostTableViewCell: UITableViewCell {
         
         view.addSubview(pictureUserImageView)
         
-        let pictureUserImageViewConstraints = [
-            pictureUserImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 7),
-            pictureUserImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 7),
-            pictureUserImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -7),
-            pictureUserImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -7)
-        ]
-        NSLayoutConstraint.activate(pictureUserImageViewConstraints)
+        pictureUserImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 7).isActive = true
+        pictureUserImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 7).isActive = true
+        pictureUserImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -7).isActive = true
+        pictureUserImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -7).isActive = true
         
         return view
     }()
@@ -171,87 +168,58 @@ class PostTableViewCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
-        let separatorViewConstraints = [
-            separatorView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            separatorView.widthAnchor.constraint(equalToConstant: contentView.frame.width),
-            separatorView.heightAnchor.constraint(equalToConstant: 0.5)
-        ]
-        let pictureUserViewConstraints = [
-            pictureUserView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 7),
-            pictureUserView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 7),
-            pictureUserView.widthAnchor.constraint(equalToConstant: 50),
-            pictureUserView.heightAnchor.constraint(equalToConstant: 50)
-        ]
-        let userNameLabelConstraints = [
-            userNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor),
-            userNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10),
-            userNameLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.height/3) * 2)
-        ]
-        let postImageViewConstraints = [
-            postImageView.topAnchor.constraint(equalTo: pictureUserView.bottomAnchor, constant: 6),
-            postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            postImageView.widthAnchor.constraint(equalToConstant: contentView.frame.width),
-            postImageView.heightAnchor.constraint(equalToConstant: (contentView.frame.height/4) * 2.6)
-        ]
-        let bigHeartOfDoubleClickConstraints = [
-            bigHeartOfDoubleClick.centerYAnchor.constraint(equalTo: postImageView.centerYAnchor),
-            bigHeartOfDoubleClick.centerXAnchor.constraint(equalTo: postImageView.centerXAnchor),
-            bigHeartOfDoubleClick.widthAnchor.constraint(equalToConstant: contentView.frame.width/3),
-            bigHeartOfDoubleClick.heightAnchor.constraint(equalToConstant: (contentView.frame.width/4) * 1.1)
-        ]
-        let likeButtonConstraints = [
-            likeButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 6),
-            likeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
-            likeButton.widthAnchor.constraint(equalToConstant: 40),
-            likeButton.heightAnchor.constraint(equalToConstant: 36)
-        ]
-        let comentaryButtonConstraints = [
-            commentaryButton.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor),
-            commentaryButton.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor, constant: 10),
-            commentaryButton.widthAnchor.constraint(equalToConstant: 34),
-            commentaryButton.heightAnchor.constraint(equalToConstant: 34)
-        ]
-        let sendButtonConstraints = [
-            sendButton.centerYAnchor.constraint(equalTo: commentaryButton.centerYAnchor),
-            sendButton.leadingAnchor.constraint(equalTo: commentaryButton.trailingAnchor, constant: 10),
-            sendButton.widthAnchor.constraint(equalToConstant: 36),
-            sendButton.heightAnchor.constraint(equalToConstant: 34)
-        ]
-        let numberOfLikesLabelConstraints = [
-            numberOfLikesLabel.topAnchor.constraint(equalTo: likeButton.bottomAnchor, constant: 6),
-            numberOfLikesLabel.leadingAnchor.constraint(equalTo: likeButton.leadingAnchor, constant: 6)
-        ]
-        let likeLabelConstraints = [
-            likeLabel.centerYAnchor.constraint(equalTo: numberOfLikesLabel.centerYAnchor),
-            likeLabel.leadingAnchor.constraint(equalTo: numberOfLikesLabel.trailingAnchor, constant: 4)
-        ]
-        let secondUserNameLabelConstraints = [
-            secondUserNameLabel.topAnchor.constraint(equalTo: numberOfLikesLabel.bottomAnchor, constant: 2),
-            secondUserNameLabel.leadingAnchor.constraint(equalTo: numberOfLikesLabel.leadingAnchor)
-        ]
-        let descriptionLabelConstraints = [
-            descriptionLabel.topAnchor.constraint(equalTo: secondUserNameLabel.topAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: secondUserNameLabel.leadingAnchor),
-            descriptionLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width/3)*2.8)
-        ]
+        separatorView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15).isActive = true
+        separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        separatorView.widthAnchor.constraint(equalToConstant: contentView.frame.width).isActive = true
+        separatorView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         
-        NSLayoutConstraint.activate(separatorViewConstraints)
-        NSLayoutConstraint.activate(pictureUserViewConstraints)
-        NSLayoutConstraint.activate(userNameLabelConstraints)
+        pictureUserView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 7).isActive = true
+        pictureUserView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 7).isActive = true
+        pictureUserView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        pictureUserView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        NSLayoutConstraint.activate(postImageViewConstraints)
-        NSLayoutConstraint.activate(bigHeartOfDoubleClickConstraints)
+        userNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor).isActive = true
+        userNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10).isActive = true
+        userNameLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.height/3) * 2).isActive = true
         
-        NSLayoutConstraint.activate(likeButtonConstraints)
-        NSLayoutConstraint.activate(comentaryButtonConstraints)
-        NSLayoutConstraint.activate(sendButtonConstraints)
+        postImageView.topAnchor.constraint(equalTo: pictureUserView.bottomAnchor, constant: 6).isActive = true
+        postImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        postImageView.widthAnchor.constraint(equalToConstant: contentView.frame.width).isActive = true
+        postImageView.heightAnchor.constraint(equalToConstant: (contentView.frame.height/4) * 2.6).isActive = true
         
-        NSLayoutConstraint.activate(numberOfLikesLabelConstraints)
-        NSLayoutConstraint.activate(likeLabelConstraints)
+        bigHeartOfDoubleClick.centerYAnchor.constraint(equalTo: postImageView.centerYAnchor).isActive = true
+        bigHeartOfDoubleClick.centerXAnchor.constraint(equalTo: postImageView.centerXAnchor).isActive = true
+        bigHeartOfDoubleClick.widthAnchor.constraint(equalToConstant: contentView.frame.width/3).isActive = true
+        bigHeartOfDoubleClick.heightAnchor.constraint(equalToConstant: (contentView.frame.width/4) * 1.1).isActive = true
         
-        NSLayoutConstraint.activate(secondUserNameLabelConstraints)
-        NSLayoutConstraint.activate(descriptionLabelConstraints)
+        likeButton.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 6).isActive = true
+        likeButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6).isActive = true
+        likeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        likeButton.heightAnchor.constraint(equalToConstant: 36).isActive = true
+        
+        commentaryButton.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor).isActive = true
+        commentaryButton.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor, constant: 10).isActive = true
+        commentaryButton.widthAnchor.constraint(equalToConstant: 34).isActive = true
+        commentaryButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        
+        sendButton.centerYAnchor.constraint(equalTo: commentaryButton.centerYAnchor).isActive = true
+        sendButton.leadingAnchor.constraint(equalTo: commentaryButton.trailingAnchor, constant: 10).isActive = true
+        sendButton.widthAnchor.constraint(equalToConstant: 36).isActive = true
+        sendButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
+        
+        numberOfLikesLabel.topAnchor.constraint(equalTo: likeButton.bottomAnchor, constant: 6).isActive = true
+        numberOfLikesLabel.leadingAnchor.constraint(equalTo: likeButton.leadingAnchor, constant: 6).isActive = true
+        
+        likeLabel.centerYAnchor.constraint(equalTo: numberOfLikesLabel.centerYAnchor).isActive = true
+        likeLabel.leadingAnchor.constraint(equalTo: numberOfLikesLabel.trailingAnchor, constant: 4).isActive = true
+        
+        secondUserNameLabel.topAnchor.constraint(equalTo: numberOfLikesLabel.bottomAnchor, constant: 2).isActive = true
+        secondUserNameLabel.leadingAnchor.constraint(equalTo: numberOfLikesLabel.leadingAnchor).isActive = true
+       
+        descriptionLabel.topAnchor.constraint(equalTo: secondUserNameLabel.topAnchor).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: secondUserNameLabel.leadingAnchor).isActive = true
+        descriptionLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width/3)*2.8).isActive = true
+        
     }
     
     @objc func addLike(button: UIButton) {
