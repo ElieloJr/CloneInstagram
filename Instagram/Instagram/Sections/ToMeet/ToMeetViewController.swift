@@ -19,12 +19,22 @@ class ToMeetViewController: UIViewController {
     private lazy var toMeetCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (view.frame.width/3) - 6.7, height: (view.frame.width/3)-10)
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: (view.frame.width/3) - 1, height: (view.frame.width/3)-10)
         
         let collectionVIew = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionVIew.register(ToMeetCollectionViewCell.self, forCellWithReuseIdentifier: ToMeetCollectionViewCell.identifier)
+        collectionVIew.register(SmallPostCollectionViewCell.self, forCellWithReuseIdentifier: SmallPostCollectionViewCell.identifier)
         collectionVIew.showsVerticalScrollIndicator = false
         return collectionVIew
+    }()
+    
+    private lazy var blurView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .label
+        view.layer.opacity = 0.2
+        view.isHidden = true
+        return view
     }()
     
     private lazy var userNameLabel: UILabel = {
@@ -127,6 +137,7 @@ class ToMeetViewController: UIViewController {
         toMeetCollectionView.dataSource = self
         
         view.addSubview(toMeetCollectionView)
+        view.addSubview(blurView)
         view.addSubview(postView)
     }
     
@@ -139,6 +150,8 @@ class ToMeetViewController: UIViewController {
             postView.widthAnchor.constraint(equalToConstant: (view.frame.width/2) * 1.8),
             postView.heightAnchor.constraint(equalToConstant: (view.frame.width/6) * 5)
         ]
+        
+        blurView.frame = view.bounds
         
         NSLayoutConstraint.activate(postViewConstraints)
     }
@@ -154,7 +167,7 @@ extension ToMeetViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ToMeetCollectionViewCell.identifier, for: indexPath) as? ToMeetCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallPostCollectionViewCell.identifier, for: indexPath) as? SmallPostCollectionViewCell else { return UICollectionViewCell() }
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(zoomInThePost))
         cell.addGestureRecognizer(longPress)
         return cell
@@ -170,9 +183,11 @@ extension ToMeetViewController {
             else { return }
             print(selectedCell.row)
             // TODO: Colocar aqui a imagem
+            blurView.isHidden = false
             postView.isHidden = false
             
         case .ended:
+            blurView.isHidden = true
             postView.isHidden = true
             
         case .possible, .changed, .cancelled, .failed: break
