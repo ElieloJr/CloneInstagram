@@ -10,7 +10,7 @@ import UIKit
 class ToMeetViewController: UIViewController {
     
     private lazy var searchController: UISearchController = {
-        let searchController = UISearchController()
+        let searchController = UISearchController(searchResultsController: ResultsViewController())
         searchController.searchBar.placeholder = "Pesquisar usuário"
         searchController.searchBar.searchBarStyle = .minimal
         return searchController
