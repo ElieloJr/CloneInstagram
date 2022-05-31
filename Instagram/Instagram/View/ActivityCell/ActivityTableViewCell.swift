@@ -29,9 +29,19 @@ class ActivityTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var messageLabel: UILabel = {
+    private lazy var messageLineUpLabel: UILabel = {
         let label = UILabel()
-        label.text = "                             que talvez conheça, está no Istagram"
+        label.text = "que talvez"
+        label.numberOfLines = 3
+        label.lineBreakMode = .byWordWrapping
+        label.font = label.font.withSize(15)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var messageLineDownLabel: UILabel = {
+        let label = UILabel()
+        label.text = "conheça, está no Istagram"
         label.numberOfLines = 3
         label.lineBreakMode = .byWordWrapping
         label.font = label.font.withSize(15)
@@ -56,7 +66,8 @@ class ActivityTableViewCell: UITableViewCell {
         
         addSubview(userImageView)
         addSubview(userNameLabel)
-        addSubview(messageLabel)
+        addSubview(messageLineUpLabel)
+        addSubview(messageLineDownLabel)
         addSubview(followButton)
         
         setupConstraints()
@@ -71,12 +82,15 @@ class ActivityTableViewCell: UITableViewCell {
         userNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor, constant: -10).isActive = true
         userNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 10).isActive = true
             
-        messageLabel.topAnchor.constraint(equalTo: userNameLabel.topAnchor).isActive = true
-        messageLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor).isActive = true
-        messageLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width/3) * 2).isActive = true
+        messageLineUpLabel.topAnchor.constraint(equalTo: userNameLabel.topAnchor).isActive = true
+        messageLineUpLabel.leadingAnchor.constraint(equalTo: userNameLabel.trailingAnchor, constant: 4).isActive = true
+        messageLineUpLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width/3) * 1.5).isActive = true
+        
+        messageLineDownLabel.topAnchor.constraint(equalTo: messageLineUpLabel.bottomAnchor).isActive = true
+        messageLineDownLabel.leadingAnchor.constraint(equalTo: userNameLabel.leadingAnchor).isActive = true
             
-        followButton.topAnchor.constraint(equalTo: messageLabel.topAnchor).isActive = true
-        followButton.leadingAnchor.constraint(equalTo: messageLabel.trailingAnchor, constant: 10).isActive = true
+        followButton.topAnchor.constraint(equalTo: messageLineUpLabel.topAnchor).isActive = true
+        followButton.leadingAnchor.constraint(equalTo: messageLineDownLabel.trailingAnchor, constant: 30).isActive = true
         followButton.widthAnchor.constraint(equalToConstant: (contentView.frame.width/4) * 1.2).isActive = true
         followButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
@@ -94,6 +108,11 @@ class ActivityTableViewCell: UITableViewCell {
             followButton.setTitle("Seguir", for: .normal)
             followButton.setTitleColor(.white, for: .normal)
         }
+    }
+    
+    func configureCell(with user: PostAPIResponse) {
+        userImageView.sd_setImage(with: URL(string: user.user.profile_image.large), completed: nil)
+        userNameLabel.text = user.user.username
     }
     
     required init?(coder: NSCoder) {
