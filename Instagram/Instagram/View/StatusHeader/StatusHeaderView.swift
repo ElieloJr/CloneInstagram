@@ -8,6 +8,8 @@
 import UIKit
 
 class StatusHeaderView: UIView {
+    
+    var status: [PostAPIResponse] = []
 
     lazy var statusCollectionVIew: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -20,9 +22,16 @@ class StatusHeaderView: UIView {
         return collectionView
     }()
     
+    private let viewModel = FeedViewModel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .red
+        
+        viewModel.statusDelegate = self
+        print(viewModel.posts)
+        status = viewModel.posts
+        viewModel.getStatus()
         
         statusCollectionVIew.delegate = self
         statusCollectionVIew.dataSource = self
@@ -43,11 +52,23 @@ extension StatusHeaderView: UICollectionViewDelegate {
 
 extension StatusHeaderView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return status.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PictureCollectionViewCell.identifier, for: indexPath) as? PictureCollectionViewCell else { return UICollectionViewCell() }
+        cell.configureCell(with: status[indexPath.row].user.profile_image.large)
         return cell
+    }
+}
+
+extension StatusHeaderView: StatusHeaderDelegate {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.statusCollectionVIew.reloadData()
+        }
+    }
+    func setStatus(with posts: [PostAPIResponse]) {
+        status = posts.reversed()
     }
 }

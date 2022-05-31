@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PictureCollectionViewCell: UICollectionViewCell {
     static let identifier = "CollectionViewCell"
     
-    private lazy var posterImageView: UIView = {
+    private lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
         imageView.contentMode = .scaleAspectFill
@@ -48,6 +49,10 @@ class PictureCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         posterView.frame = contentView.bounds
+    }
+    
+    func configureCell(with url: String) {
+        posterImageView.sd_setImage(with: URL(string: url), completed: nil)
     }
     
     required init?(coder: NSCoder) {
