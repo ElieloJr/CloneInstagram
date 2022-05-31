@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SmallPostCollectionViewCell: UICollectionViewCell {
     
@@ -14,7 +15,8 @@ class SmallPostCollectionViewCell: UICollectionViewCell {
     private lazy var smallImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .darkGray
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -29,7 +31,7 @@ class SmallPostCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(with post: UIImage) {
-        smallImageView.image = post
+    func configureCell(with post: String) {
+        smallImageView.sd_setImage(with: URL(string: post), completed: nil)
     }
 }
