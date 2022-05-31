@@ -30,6 +30,7 @@
 		29A25FE62845318E0058F0E0 /* PostAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A25FE52845318E0058F0E0 /* PostAPIResponse.swift */; };
 		29A25FE928454B9B0058F0E0 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 29A25FE828454B9B0058F0E0 /* SDWebImage */; };
 		29A25FEB28454B9B0058F0E0 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 29A25FEA28454B9B0058F0E0 /* SDWebImageMapKit */; };
+		29A25FEF284692B90058F0E0 /* PerfilAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A25FEE284692B90058F0E0 /* PerfilAPI.swift */; };
 		29BB367328382CBD007F72F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367228382CBD007F72F5 /* AppDelegate.swift */; };
 		29BB367528382CBD007F72F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367428382CBD007F72F5 /* SceneDelegate.swift */; };
 		29BB367D28382CBD007F72F5 /* Instagram.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 29BB367B28382CBD007F72F5 /* Instagram.xcdatamodeld */; };
@@ -59,6 +60,7 @@
 		29A25FE12844F2680058F0E0 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		29A25FE328452FAE0058F0E0 /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPI.swift; sourceTree = "<group>"; };
 		29A25FE52845318E0058F0E0 /* PostAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPIResponse.swift; sourceTree = "<group>"; };
+		29A25FEE284692B90058F0E0 /* PerfilAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilAPI.swift; sourceTree = "<group>"; };
 		29BB366F28382CBD007F72F5 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29BB367228382CBD007F72F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29BB367428382CBD007F72F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				29A25FE328452FAE0058F0E0 /* PostAPI.swift */,
+				29A25FEE284692B90058F0E0 /* PerfilAPI.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				297B60A7283BCBC100ABC337 /* ToMeetViewModel.swift in Sources */,
 				297B60AE283BCD9800ABC337 /* MainTabBarViewController.swift in Sources */,
 				29A25FE428452FAE0058F0E0 /* PostAPI.swift in Sources */,
+				29A25FEF284692B90058F0E0 /* PerfilAPI.swift in Sources */,
 				297B60B6283C036900ABC337 /* PictureCollectionViewCell.swift in Sources */,
 				29BB367328382CBD007F72F5 /* AppDelegate.swift in Sources */,
 				29BB367528382CBD007F72F5 /* SceneDelegate.swift in Sources */,

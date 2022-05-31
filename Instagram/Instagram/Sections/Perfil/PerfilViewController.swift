@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PerfilViewController: UIViewController {
     
-    private lazy var pictureImageView: UIView = {
+    private lazy var pictureImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
         imageView.contentMode = .scaleAspectFill
@@ -236,6 +237,7 @@ class PerfilViewController: UIViewController {
         let imageView = UIImageView()
         imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         imageView.layer.cornerRadius = 10
@@ -271,11 +273,14 @@ class PerfilViewController: UIViewController {
         return view
     }()
     
+    let viewModel = PerfilViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         setupConstraints()
+        viewModel.getPublications()
     }
     
     private func setupView() {
@@ -286,6 +291,7 @@ class PerfilViewController: UIViewController {
         
         publicationsCollectionView.delegate = self
         publicationsCollectionView.dataSource = self
+        viewModel.delegate = self
         
         view.addSubview(pictureView)
         view.addSubview(stackStatistics)
@@ -338,13 +344,15 @@ extension PerfilViewController: UICollectionViewDelegate {
 
 extension PerfilViewController:UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return viewModel.posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallPostCollectionViewCell.identifier, for: indexPath) as? SmallPostCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallPostCollectionViewCell.identifier, for: indexPath)
+                as? SmallPostCollectionViewCell else { return UICollectionViewCell() }
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(zoomInThePost))
         cell.addGestureRecognizer(longPress)
+        cell.configureCell(with: viewModel.posts[indexPath.row].urls.regular)
         return cell
     }
 }
@@ -356,8 +364,12 @@ extension PerfilViewController {
         case .began:
             guard let selectedCell = publicationsCollectionView.indexPathForItem(at: gesture.location(in: publicationsCollectionView))
             else { return }
-            print(selectedCell.row)
-            // TODO: Colocar aqui a imagem
+            let post = viewModel.posts[selectedCell.row]
+                        
+            pictureUserImageView.sd_setImage(with: URL(string: post.user.profile_image.large), completed: nil)
+            zoomUserNameLabel.text = post.user.username
+            postImageView.sd_setImage(with: URL(string: post.urls.full), completed: nil)
+            
             blurView.isHidden = false
             zoomPostView.isHidden = false
             
@@ -367,6 +379,28 @@ extension PerfilViewController {
             
         case .possible, .changed, .cancelled, .failed: break
         @unknown default: break
+        }
+    }
+}
+
+extension PerfilViewController: PerfilViewDelegate {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.publicationsCollectionView.reloadData()
+        }
+    }
+    func configurePage(with user: User) {
+        DispatchQueue.main.async {
+            self.navigationItem.title = Titles().userName(user.username)
+            
+            if let lastName = user.last_name {
+                self.userNameLabel.text = user.first_name + " \(lastName)"
+            }
+            
+            self.pictureImageView.sd_setImage(with: URL(string: user.profile_image.large), completed: nil)
+            self.numberPublicationsLabel.text = "\(self.viewModel.posts.count)"
+            self.numberFollowersLabel.text = "512"
+            self.numberFollowingLabel.text = "2437"
         }
     }
 }
