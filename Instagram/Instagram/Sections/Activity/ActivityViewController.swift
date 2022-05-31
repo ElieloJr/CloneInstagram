@@ -16,11 +16,14 @@ class ActivityViewController: UIViewController {
         tableView.register(ActivityTableViewCell.self, forCellReuseIdentifier: ActivityTableViewCell.identifier)
         return tableView
     }()
+    
+    let viewModel = ActivityViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
+        viewModel.getUsers()
     }
 
     private func setupView() {
@@ -31,6 +34,7 @@ class ActivityViewController: UIViewController {
         
         activityTableView.delegate = self
         activityTableView.dataSource = self
+        viewModel.delegate = self
         
         view.addSubview(activityTableView)
         
@@ -46,11 +50,20 @@ extension ActivityViewController: UITableViewDelegate {
 
 extension ActivityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.user.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ActivityTableViewCell.identifier, for: indexPath) as? ActivityTableViewCell else { return UITableViewCell() }
+        cell.configureCell(with: viewModel.user[indexPath.row])
         return cell
+    }
+}
+
+extension ActivityViewController: ActivityViewDelegate {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.activityTableView.reloadData()
+        }
     }
 }

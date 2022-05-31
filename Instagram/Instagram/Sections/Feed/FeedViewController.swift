@@ -18,11 +18,16 @@ class FeedViewController: UIViewController {
         return tableView
     }()
     
+    let viewModel = FeedViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         setupConstraints()
+        
+        viewModel.getPosts()
+        viewModel.getStatus()
     }
     
     func setupView() {
@@ -33,6 +38,7 @@ class FeedViewController: UIViewController {
         
         feedTableView.delegate = self
         feedTableView.dataSource = self
+        viewModel.delegate = self
         
         view.addSubview(feedTableView)
     }
@@ -50,12 +56,20 @@ extension FeedViewController: UITableViewDelegate {
 
 extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
+        cell.setupPost(post: viewModel.posts[indexPath.row])
         return cell
     }
-    
+}
+
+extension FeedViewController: FeedViewDelegate {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.feedTableView.reloadData()
+        }
+    }
 }

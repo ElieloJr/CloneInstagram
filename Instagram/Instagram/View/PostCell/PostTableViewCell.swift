@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PostTableViewCell: UITableViewCell {
 
     static let identifier = "PostTableViewCell"
+    var numberDefaultOfLikes = 0
     
     private lazy var separatorView: UIView = {
         let view = UIView()
@@ -22,7 +24,7 @@ class PostTableViewCell: UITableViewCell {
     private lazy var pictureUserImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 18
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,6 +62,7 @@ class PostTableViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.isUserInteractionEnabled = true
         
@@ -133,9 +136,7 @@ class PostTableViewCell: UITableViewCell {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "                          A descrição vem aqui"
-        label.numberOfLines = 3
-        label.lineBreakMode = .byWordWrapping
+        label.text = "A descrição vem aqui"
         label.font = label.font.withSize(15)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -217,8 +218,8 @@ class PostTableViewCell: UITableViewCell {
         secondUserNameLabel.leadingAnchor.constraint(equalTo: numberOfLikesLabel.leadingAnchor).isActive = true
        
         descriptionLabel.topAnchor.constraint(equalTo: secondUserNameLabel.topAnchor).isActive = true
-        descriptionLabel.leadingAnchor.constraint(equalTo: secondUserNameLabel.leadingAnchor).isActive = true
-        descriptionLabel.widthAnchor.constraint(equalToConstant: (contentView.frame.width/3)*2.8).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: secondUserNameLabel.trailingAnchor, constant: 4).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: postImageView.trailingAnchor, constant: -10).isActive = true
         
     }
     
@@ -226,11 +227,13 @@ class PostTableViewCell: UITableViewCell {
         if likeButton.tintColor == .red {
             likeButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
             likeButton.tintColor = .label
-            numberOfLikesLabel.text = "0"
+            numberDefaultOfLikes -= 1
+            numberOfLikesLabel.text = "\(numberDefaultOfLikes)"
         } else {
             likeButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
             likeButton.tintColor = .red
-            numberOfLikesLabel.text = "1"
+            numberDefaultOfLikes += 1
+            numberOfLikesLabel.text = "\(numberDefaultOfLikes)"
         }
     }
     
@@ -243,24 +246,29 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @objc func likeWithDoubleClick() {
+        if likeButton.tintColor != .red {
+            numberDefaultOfLikes += 1
+            numberOfLikesLabel.text = "\(numberDefaultOfLikes)"
+        }
+        
         bigHeartOfDoubleClick.isHidden = false
         likeButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
         likeButton.tintColor = .red
-        numberOfLikesLabel.text = "1"
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.bigHeartOfDoubleClick.isHidden = true
         }
     }
     
-    func setupPost(perfil: UIImage, post: UIImage, userName: String, numLikes: String, description: String) {
-        pictureUserImageView.image = perfil
-        postImageView.image = post
+    func setupPost(post: PostAPIResponse) {
+        pictureUserImageView.sd_setImage(with: URL(string: post.user.profile_image.small), completed: nil)
+        postImageView.sd_setImage(with: URL(string: post.urls.regular), completed: nil)
         
-        userNameLabel.text = userName
-        secondUserNameLabel.text = userName
+        userNameLabel.text = post.user.username
+        secondUserNameLabel.text = post.user.username
         
-        numberOfLikesLabel.text = numLikes
-        descriptionLabel.text = "                      " + description
+        numberOfLikesLabel.text = "\(post.likes)"
+        numberDefaultOfLikes = post.likes
+        descriptionLabel.text = post.description ?? ""
     }
 }

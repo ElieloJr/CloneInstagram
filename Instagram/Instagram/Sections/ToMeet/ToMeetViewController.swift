@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ToMeetViewController: UIViewController {
     
@@ -77,6 +78,7 @@ class ToMeetViewController: UIViewController {
         let imageView = UIImageView()
         imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -109,11 +111,14 @@ class ToMeetViewController: UIViewController {
         return view
     }()
 
+    let viewModel = ToMeetViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         setupConstraints()
+        viewModel.getPosts()
     }
     
     private func setupView() {
@@ -125,6 +130,7 @@ class ToMeetViewController: UIViewController {
         
         toMeetCollectionView.delegate = self
         toMeetCollectionView.dataSource = self
+        viewModel.delegate = self
         
         view.addSubview(toMeetCollectionView)
         view.addSubview(blurView)
@@ -149,13 +155,14 @@ extension ToMeetViewController: UICollectionViewDelegate {
 
 extension ToMeetViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return viewModel.posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmallPostCollectionViewCell.identifier, for: indexPath) as? SmallPostCollectionViewCell else { return UICollectionViewCell() }
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(zoomInThePost))
         cell.addGestureRecognizer(longPress)
+        cell.configureCell(with: viewModel.posts[indexPath.row].urls.regular)
         return cell
     }
 }
@@ -167,8 +174,12 @@ extension ToMeetViewController {
         case .began:
             guard let selectedCell = toMeetCollectionView.indexPathForItem(at: gesture.location(in: toMeetCollectionView))
             else { return }
-            print(selectedCell.row)
-            // TODO: Colocar aqui a imagem
+            let post = viewModel.posts[selectedCell.row]
+            
+            pictureUserImageView.sd_setImage(with: URL(string: post.user.profile_image.large), completed: nil)
+            userNameLabel.text = post.user.username
+            postImageView.sd_setImage(with: URL(string: post.urls.regular), completed: nil)
+            
             blurView.isHidden = false
             postView.isHidden = false
             
@@ -178,6 +189,14 @@ extension ToMeetViewController {
             
         case .possible, .changed, .cancelled, .failed: break
         @unknown default: break
+        }
+    }
+}
+
+extension ToMeetViewController: ToMeetViewDelegate {
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.toMeetCollectionView.reloadData()
         }
     }
 }
