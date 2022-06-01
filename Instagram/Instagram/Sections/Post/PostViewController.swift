@@ -128,6 +128,30 @@ class PostViewController: UIViewController {
         
         return stack
     }()
+    
+    private lazy var numberOfLikesLabel: UILabel = {
+        let label = UILabel()
+        label.text = "0"
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var likeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "curtidas"
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var secondUserNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "NomeUsuário"
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,6 +171,11 @@ class PostViewController: UIViewController {
         
         view.addSubview(postImageView)
         view.addSubview(actionsStack)
+        
+        view.addSubview(numberOfLikesLabel)
+        view.addSubview(likeLabel)
+        
+        view.addSubview(secondUserNameLabel)
     }
     
     private func setupConstraints() {
@@ -168,6 +197,15 @@ class PostViewController: UIViewController {
         actionsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         actionsStack.widthAnchor.constraint(equalToConstant: (view.frame.width/2) * 0.65).isActive = true
         actionsStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        numberOfLikesLabel.topAnchor.constraint(equalTo: actionsStack.bottomAnchor, constant: 4).isActive = true
+        numberOfLikesLabel.leftAnchor.constraint(equalTo: actionsStack.leftAnchor).isActive = true
+        
+        likeLabel.centerYAnchor.constraint(equalTo: numberOfLikesLabel.centerYAnchor).isActive = true
+        likeLabel.leadingAnchor.constraint(equalTo: numberOfLikesLabel.trailingAnchor, constant: 4).isActive = true
+        
+        secondUserNameLabel.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 4).isActive = true
+        secondUserNameLabel.leadingAnchor.constraint(equalTo: numberOfLikesLabel.leadingAnchor).isActive = true
     }
     
     @objc func backButton() {
