@@ -340,9 +340,11 @@ class PerfilViewController: UIViewController {
 
 extension PerfilViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let postController = UINavigationController(rootViewController: PostViewController())
-        postController.modalPresentationStyle = .fullScreen
-        present(postController, animated: true)
+        let postController = PostViewController()
+        postController.navigationItem.title = navigationItem.title
+        let rootController = UINavigationController(rootViewController: postController)
+        rootController.modalPresentationStyle = .fullScreen
+        present(rootController, animated: true)
     }
 }
 

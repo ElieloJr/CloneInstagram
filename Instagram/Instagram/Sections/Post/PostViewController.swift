@@ -35,7 +35,6 @@ class PostViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = Colors().defautBackground
         
-        navigationItem.title = Titles().postTitle
         self.navigationController?.navigationBar.titleTextAttributes = Titles().feedFont
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
     }
