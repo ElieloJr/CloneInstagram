@@ -78,6 +78,56 @@ class PostViewController: UIViewController {
 //        imageView.addGestureRecognizer(doubleTap)
         return imageView
     }()
+    
+    private lazy var likeButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
+        button.tintColor = .label
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(addLike), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var commentaryButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "message"), for: .normal)
+        button.tintColor = .label
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(addCommentary), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var sendButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "paperplane"), for: .normal)
+        button.tintColor = .label
+        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addTarget(self, action: #selector(sendPost), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var actionsStack: UIStackView = {
+        let stack = UIStackView()
+        stack.distribution = .equalCentering
+        stack.axis = .horizontal
+        stack.alignment = .center
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        stack.addArrangedSubview(likeButton)
+        stack.addArrangedSubview(commentaryButton)
+        stack.addArrangedSubview(sendButton)
+        
+        likeButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        likeButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        commentaryButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        commentaryButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        sendButton.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        sendButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        return stack
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +146,7 @@ class PostViewController: UIViewController {
         view.addSubview(userNameLabel)
         
         view.addSubview(postImageView)
+        view.addSubview(actionsStack)
     }
     
     private func setupConstraints() {
@@ -111,7 +162,12 @@ class PostViewController: UIViewController {
         postImageView.topAnchor.constraint(equalTo: pictureUserView.bottomAnchor, constant: 10).isActive = true
         postImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         postImageView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
-        postImageView.heightAnchor.constraint(equalToConstant: (view.frame.height/4) * 2).isActive = true
+        postImageView.heightAnchor.constraint(equalToConstant: (view.frame.height/4) * 1.8).isActive = true
+        
+        actionsStack.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 4).isActive = true
+        actionsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        actionsStack.widthAnchor.constraint(equalToConstant: (view.frame.width/2) * 0.65).isActive = true
+        actionsStack.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     @objc func backButton() {
