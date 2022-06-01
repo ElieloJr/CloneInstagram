@@ -11,7 +11,7 @@ class FeedViewController: UIViewController {
 
     lazy var feedTableView: UITableView = {
         let tableView = UITableView()
-        let headerTable = StatusHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.width/4))
+        let headerTable = StatusHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: (view.bounds.width/4)*1.3))
         tableView.tableHeaderView = headerTable
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
         tableView.showsVerticalScrollIndicator = false
