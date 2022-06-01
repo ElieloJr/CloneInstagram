@@ -8,5 +8,5 @@
 import Foundation
 
 class PostViewModel {
-    
+    var numberDefaultOfLikes = 0
 }

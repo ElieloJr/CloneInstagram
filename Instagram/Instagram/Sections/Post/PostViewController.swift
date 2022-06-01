@@ -71,11 +71,20 @@ class PostViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.isUserInteractionEnabled = true
         
-//        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(likeWithDoubleClick))
-//        doubleTap.numberOfTouchesRequired = 1
-//        doubleTap.numberOfTapsRequired = 2
-//
-//        imageView.addGestureRecognizer(doubleTap)
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(likeWithDoubleClick))
+        doubleTap.numberOfTouchesRequired = 1
+        doubleTap.numberOfTapsRequired = 2
+
+        imageView.addGestureRecognizer(doubleTap)
+        return imageView
+    }()
+    
+    private lazy var bigHeartOfDoubleClick: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "heart.fill")
+        imageView.tintColor = .red
+        imageView.isHidden = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -83,8 +92,7 @@ class PostViewController: UIViewController {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
         button.tintColor = .label
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(addLike), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addLike), for: .touchUpInside)
         return button
     }()
     
@@ -92,8 +100,6 @@ class PostViewController: UIViewController {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "message"), for: .normal)
         button.tintColor = .label
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(addCommentary), for: .touchUpInside)
         return button
     }()
     
@@ -101,8 +107,7 @@ class PostViewController: UIViewController {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "paperplane"), for: .normal)
         button.tintColor = .label
-        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addTarget(self, action: #selector(sendPost), for: .touchUpInside)
+//        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -160,6 +165,8 @@ class PostViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    let viewModel = PostViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -178,6 +185,7 @@ class PostViewController: UIViewController {
         view.addSubview(userNameLabel)
         
         view.addSubview(postImageView)
+        view.addSubview(bigHeartOfDoubleClick)
         view.addSubview(actionsStack)
         
         view.addSubview(numberOfLikesLabel)
@@ -202,6 +210,11 @@ class PostViewController: UIViewController {
         postImageView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
         postImageView.heightAnchor.constraint(equalToConstant: (view.frame.height/4) * 1.8).isActive = true
         
+        bigHeartOfDoubleClick.centerYAnchor.constraint(equalTo: postImageView.centerYAnchor).isActive = true
+        bigHeartOfDoubleClick.centerXAnchor.constraint(equalTo: postImageView.centerXAnchor).isActive = true
+        bigHeartOfDoubleClick.widthAnchor.constraint(equalToConstant: view.frame.width/3).isActive = true
+        bigHeartOfDoubleClick.heightAnchor.constraint(equalToConstant: (view.frame.width/4) * 1.1).isActive = true
+        
         actionsStack.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 4).isActive = true
         actionsStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         actionsStack.widthAnchor.constraint(equalToConstant: (view.frame.width/2) * 0.65).isActive = true
@@ -221,6 +234,35 @@ class PostViewController: UIViewController {
         descriptionLabel.trailingAnchor.constraint(equalTo: postImageView.trailingAnchor, constant: -10).isActive = true
     }
     
+    @objc func likeWithDoubleClick() {
+        if likeButton.tintColor != .red {
+            viewModel.numberDefaultOfLikes += 1
+            numberOfLikesLabel.text = "\(viewModel.numberDefaultOfLikes)"
+        }
+        
+        bigHeartOfDoubleClick.isHidden = false
+        likeButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
+        likeButton.tintColor = .red
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.bigHeartOfDoubleClick.isHidden = true
+        }
+    }
+    
+    @objc func addLike() {
+        if likeButton.tintColor == .red {
+            likeButton.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
+            likeButton.tintColor = .label
+            viewModel.numberDefaultOfLikes -= 1
+            numberOfLikesLabel.text = "\(viewModel.numberDefaultOfLikes)"
+        } else {
+            likeButton.setBackgroundImage(UIImage(systemName: "heart.fill"), for: .normal)
+            likeButton.tintColor = .red
+            viewModel.numberDefaultOfLikes += 1
+            numberOfLikesLabel.text = "\(viewModel.numberDefaultOfLikes)"
+        }
+    }
+    
     @objc func backButton() {
         dismiss(animated: true, completion: nil)
     }
@@ -230,7 +272,10 @@ class PostViewController: UIViewController {
         userNameLabel.text = post.user.username
         
         postImageView.sd_setImage(with: URL(string: post.urls.full), completed: nil)
+        
         numberOfLikesLabel.text = "\(post.likes)"
+        viewModel.numberDefaultOfLikes = post.likes
+        
         secondUserNameLabel.text = post.user.username
         descriptionLabel.text = post.description ?? ""
     }
