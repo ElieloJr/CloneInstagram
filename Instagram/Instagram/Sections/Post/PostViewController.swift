@@ -152,6 +152,14 @@ class PostViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "A descrição vem aqui"
+        label.font = label.font.withSize(17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -176,6 +184,7 @@ class PostViewController: UIViewController {
         view.addSubview(likeLabel)
         
         view.addSubview(secondUserNameLabel)
+        view.addSubview(descriptionLabel)
     }
     
     private func setupConstraints() {
@@ -206,6 +215,10 @@ class PostViewController: UIViewController {
         
         secondUserNameLabel.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: 4).isActive = true
         secondUserNameLabel.leadingAnchor.constraint(equalTo: numberOfLikesLabel.leadingAnchor).isActive = true
+        
+        descriptionLabel.centerYAnchor.constraint(equalTo: secondUserNameLabel.centerYAnchor).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: secondUserNameLabel.trailingAnchor, constant: 6).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: postImageView.trailingAnchor, constant: -10).isActive = true
     }
     
     @objc func backButton() {

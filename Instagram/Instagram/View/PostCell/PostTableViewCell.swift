@@ -220,7 +220,6 @@ class PostTableViewCell: UITableViewCell {
         descriptionLabel.topAnchor.constraint(equalTo: secondUserNameLabel.topAnchor).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: secondUserNameLabel.trailingAnchor, constant: 4).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: postImageView.trailingAnchor, constant: -10).isActive = true
-        
     }
     
     @objc func addLike(button: UIButton) {
