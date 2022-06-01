@@ -150,7 +150,11 @@ class ToMeetViewController: UIViewController {
 }
 
 extension ToMeetViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let postController = UINavigationController(rootViewController: PostViewController())
+        postController.modalPresentationStyle = .fullScreen
+        present(postController, animated: true)
+    }
 }
 
 extension ToMeetViewController: UICollectionViewDataSource {
