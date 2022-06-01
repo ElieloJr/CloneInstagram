@@ -26,15 +26,11 @@ class StatusHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .red
-        
-        viewModel.statusDelegate = self
-        print(viewModel.posts)
-        status = viewModel.posts
         viewModel.getStatus()
         
         statusCollectionVIew.delegate = self
         statusCollectionVIew.dataSource = self
+        viewModel.statusDelegate = self
         
         addSubview(statusCollectionVIew)
         
@@ -57,7 +53,8 @@ extension StatusHeaderView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PictureCollectionViewCell.identifier, for: indexPath) as? PictureCollectionViewCell else { return UICollectionViewCell() }
-        cell.configureCell(with: status[indexPath.row].user.profile_image.large)
+        let cellStatus = status[indexPath.row].user
+        cell.configureCell(with: cellStatus.profile_image.large, and: cellStatus.username)
         return cell
     }
 }
