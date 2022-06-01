@@ -62,6 +62,22 @@ class PostViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private lazy var postImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .lightGray
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isUserInteractionEnabled = true
+        
+//        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(likeWithDoubleClick))
+//        doubleTap.numberOfTouchesRequired = 1
+//        doubleTap.numberOfTapsRequired = 2
+//
+//        imageView.addGestureRecognizer(doubleTap)
+        return imageView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +94,8 @@ class PostViewController: UIViewController {
         
         view.addSubview(pictureUserView)
         view.addSubview(userNameLabel)
+        
+        view.addSubview(postImageView)
     }
     
     private func setupConstraints() {
@@ -89,6 +107,11 @@ class PostViewController: UIViewController {
         userNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor).isActive = true
         userNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10).isActive = true
         userNameLabel.widthAnchor.constraint(equalToConstant: (view.frame.height/3) * 2).isActive = true
+        
+        postImageView.topAnchor.constraint(equalTo: pictureUserView.bottomAnchor, constant: 10).isActive = true
+        postImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        postImageView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        postImageView.heightAnchor.constraint(equalToConstant: (view.frame.height/4) * 2).isActive = true
     }
     
     @objc func backButton() {
