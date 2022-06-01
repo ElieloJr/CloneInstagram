@@ -54,6 +54,14 @@ class PostViewController: UIViewController {
         
         return view
     }()
+    
+    private lazy var userNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "NomeUsuário"
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +77,7 @@ class PostViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
         
         view.addSubview(pictureUserView)
+        view.addSubview(userNameLabel)
     }
     
     private func setupConstraints() {
@@ -76,6 +85,10 @@ class PostViewController: UIViewController {
         pictureUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
         pictureUserView.widthAnchor.constraint(equalToConstant: 50).isActive = true
         pictureUserView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        userNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor).isActive = true
+        userNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10).isActive = true
+        userNameLabel.widthAnchor.constraint(equalToConstant: (view.frame.height/3) * 2).isActive = true
     }
     
     @objc func backButton() {
