@@ -339,10 +339,18 @@ class PerfilViewController: UIViewController {
 }
 
 extension PerfilViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let postController = PostViewController()
+        postController.navigationItem.title = navigationItem.title
+        postController.setupScreen(with: viewModel.posts[indexPath.row])
+        
+        let rootController = UINavigationController(rootViewController: postController)
+        rootController.modalPresentationStyle = .fullScreen
+        present(rootController, animated: true)
+    }
 }
 
-extension PerfilViewController:UICollectionViewDataSource {
+extension PerfilViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.posts.count
     }

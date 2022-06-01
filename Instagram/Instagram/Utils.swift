@@ -12,6 +12,7 @@ class Titles {
     let feedTitle = "Instagram"
     let activityTitle = "Atividade"
     let toMeetTitle = "Conhecer"
+    let postTitle = "Post"
     
     func userName(_ name: String) -> String{
         return name

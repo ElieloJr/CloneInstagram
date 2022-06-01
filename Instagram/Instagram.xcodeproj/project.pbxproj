@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		294B0DF32847A5CA002FE314 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B0DF22847A5CA002FE314 /* PostViewController.swift */; };
+		294B0DF52847A5FF002FE314 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294B0DF42847A5FF002FE314 /* PostViewModel.swift */; };
 		297B609B283BC8FE00ABC337 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B609A283BC8FE00ABC337 /* FeedViewController.swift */; };
 		297B609D283BC91400ABC337 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B609C283BC91400ABC337 /* FeedViewModel.swift */; };
 		297B60A0283BCA9600ABC337 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297B609F283BCA9600ABC337 /* ActivityViewController.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		294B0DF22847A5CA002FE314 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		294B0DF42847A5FF002FE314 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		297B609A283BC8FE00ABC337 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		297B609C283BC91400ABC337 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		297B609F283BCA9600ABC337 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		294B0DF12847A593002FE314 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				294B0DF22847A5CA002FE314 /* PostViewController.swift */,
+				294B0DF42847A5FF002FE314 /* PostViewModel.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		297B6096283BC85500ABC337 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +105,7 @@
 				297B60A3283BCB6400ABC337 /* ToMeet */,
 				29A25FDB2844EAEF0058F0E0 /* Results */,
 				297B60A8283BCC1D00ABC337 /* Perfil */,
+				294B0DF12847A593002FE314 /* Post */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -362,7 +376,9 @@
 				297B60B1283BD7F300ABC337 /* Utils.swift in Sources */,
 				297B609D283BC91400ABC337 /* FeedViewModel.swift in Sources */,
 				297B609B283BC8FE00ABC337 /* FeedViewController.swift in Sources */,
+				294B0DF52847A5FF002FE314 /* PostViewModel.swift in Sources */,
 				297B60AC283BCC6B00ABC337 /* PerfilViewModel.swift in Sources */,
+				294B0DF32847A5CA002FE314 /* PostViewController.swift in Sources */,
 				29A25FDF2844EC460058F0E0 /* ResultsViewModel.swift in Sources */,
 				297B60A7283BCBC100ABC337 /* ToMeetViewModel.swift in Sources */,
 				297B60AE283BCD9800ABC337 /* MainTabBarViewController.swift in Sources */,
