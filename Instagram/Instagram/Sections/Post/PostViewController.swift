@@ -224,4 +224,14 @@ class PostViewController: UIViewController {
     @objc func backButton() {
         dismiss(animated: true, completion: nil)
     }
+    
+    func setupScreen(with post: PostAPIResponse) {
+        pictureUserImageView.sd_setImage(with: URL(string: post.user.profile_image.large), completed: nil)
+        userNameLabel.text = post.user.username
+        
+        postImageView.sd_setImage(with: URL(string: post.urls.full), completed: nil)
+        numberOfLikesLabel.text = "\(post.likes)"
+        secondUserNameLabel.text = post.user.username
+        descriptionLabel.text = post.description ?? ""
+    }
 }

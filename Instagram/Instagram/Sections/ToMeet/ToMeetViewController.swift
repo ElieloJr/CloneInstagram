@@ -153,6 +153,8 @@ extension ToMeetViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let postController = PostViewController()
         postController.navigationItem.title = Titles().toMeetTitle
+        postController.setupScreen(with: viewModel.posts[indexPath.row])
+        
         let rootController = UINavigationController(rootViewController: postController)
         rootController.modalPresentationStyle = .fullScreen
         present(rootController, animated: true)
