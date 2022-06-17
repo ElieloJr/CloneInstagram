@@ -58,12 +58,7 @@ class ToMeetViewController: UIViewController {
     
     private lazy var pictureUserView: UIView = {
         let view = UIView()
-        view.layer.borderColor = UIColor.red.cgColor
-        view.layer.borderWidth = 2
         view.layer.cornerRadius = 20
-        view.clipsToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(pictureUserImageView)
         
         pictureUserImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 4).isActive = true
@@ -95,10 +90,8 @@ class ToMeetViewController: UIViewController {
         view.addSubview(userNameLabel)
         view.addSubview(postImageView)
         
-        pictureUserView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
-        pictureUserView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        pictureUserView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        pictureUserView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        pictureUserView.frame = CGRect(x: view.frame.minX+7, y: view.frame.minY+10, width: 40, height: 40)
+        Add.gradientBorder(with: pictureUserView, border: 20)
             
         userNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor).isActive = true
         userNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10).isActive = true
@@ -122,10 +115,10 @@ class ToMeetViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = Colors().defautBackground
+        view.backgroundColor = Colors.defautBackground
         
-        navigationItem.title = Titles().toMeetTitle
-        self.navigationController?.navigationBar.titleTextAttributes = Titles().defaultFont
+        navigationItem.title = Titles.toMeetTitle
+        self.navigationController?.navigationBar.titleTextAttributes = Titles.defaultFont
         navigationItem.searchController = searchController
         
         toMeetCollectionView.delegate = self
@@ -152,7 +145,7 @@ class ToMeetViewController: UIViewController {
 extension ToMeetViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let postController = PostViewController()
-        postController.navigationItem.title = Titles().toMeetTitle
+        postController.navigationItem.title = Titles.toMeetTitle
         postController.setupScreen(with: viewModel.posts[indexPath.row])
         
         let rootController = UINavigationController(rootViewController: postController)

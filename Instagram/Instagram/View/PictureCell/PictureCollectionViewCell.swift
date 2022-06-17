@@ -22,13 +22,9 @@ class PictureCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var posterView: UIView = {
+    lazy var posterView: UIView = {
         let view = UIView()
-        view.layer.borderColor = UIColor.red.cgColor
-        view.layer.borderWidth = 3
-        view.layer.cornerRadius = 50
-        view.clipsToBounds = true
-        
+        view.layer.cornerRadius = 200
         view.addSubview(posterImageView)
         
         posterImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 7).isActive = true
@@ -56,7 +52,8 @@ class PictureCollectionViewCell: UICollectionViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        posterView.frame = contentView.bounds
+        posterView.frame = CGRect(x: 8, y: 2, width: 103, height: 103)
+        Add.gradientBorder(with: posterView, border: 50)
         
         usernameLabel.topAnchor.constraint(equalTo: posterView.bottomAnchor, constant: 2).isActive = true
         usernameLabel.centerXAnchor.constraint(equalTo: posterView.centerXAnchor).isActive = true

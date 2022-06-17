@@ -27,10 +27,10 @@ class ActivityViewController: UIViewController {
     }
 
     private func setupView() {
-        view.backgroundColor = Colors().defautBackground
+        view.backgroundColor = Colors.defautBackground
         
-        navigationItem.title = Titles().activityTitle
-        self.navigationController?.navigationBar.titleTextAttributes = Titles().defaultFont
+        navigationItem.title = Titles.activityTitle
+        self.navigationController?.navigationBar.titleTextAttributes = Titles.defaultFont
         
         activityTableView.delegate = self
         activityTableView.dataSource = self

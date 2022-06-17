@@ -13,8 +13,11 @@ class StatusHeaderView: UIView {
 
     lazy var statusCollectionVIew: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 100)
+        layout.itemSize = CGSize(width: 115, height: 125)
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+//        layout.itemSize = CGSize(width: (view.frame.width/3) - 1, height: (view.frame.width/3)-10)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(PictureCollectionViewCell.self, forCellWithReuseIdentifier: PictureCollectionViewCell.identifier)

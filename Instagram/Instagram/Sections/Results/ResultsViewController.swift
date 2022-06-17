@@ -30,7 +30,7 @@ class ResultsViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = Colors().defautBackground
+        view.backgroundColor = Colors.defautBackground
         navigationItem.searchController = searchController
         
         resultsTableView.delegate = self

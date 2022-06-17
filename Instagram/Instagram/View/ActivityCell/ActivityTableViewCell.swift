@@ -53,7 +53,7 @@ class ActivityTableViewCell: UITableViewCell {
         let button = UIButton()
         button.setTitle("Seguir", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        button.backgroundColor = Colors().defaultBlue
+        button.backgroundColor = Colors.defaultBlue
         button.layer.cornerRadius = 8
         button.addTarget(self, action: #selector(setStatsOfFollow), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -96,7 +96,7 @@ class ActivityTableViewCell: UITableViewCell {
     }
     
     @objc func setStatsOfFollow() {
-        if followButton.backgroundColor == Colors().defaultBlue {
+        if followButton.backgroundColor == Colors.defaultBlue {
             followButton.layer.borderColor = UIColor.darkGray.cgColor
             followButton.layer.borderWidth = 2
             followButton.backgroundColor = UIColor.systemBackground
@@ -104,7 +104,7 @@ class ActivityTableViewCell: UITableViewCell {
             followButton.setTitleColor(.label, for: .normal)
         } else {
             followButton.layer.borderWidth = 0
-            followButton.backgroundColor = Colors().defaultBlue
+            followButton.backgroundColor = Colors.defaultBlue
             followButton.setTitle("Seguir", for: .normal)
             followButton.setTitleColor(.white, for: .normal)
         }

@@ -25,3 +25,26 @@ extension UIImage {
         }
     }
 }
+
+extension UIView {
+    func gradientBorder(with border: Int) {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = [
+            UIColor(red: 0.90, green: 0.38, blue: 0.20, alpha: 1.00).cgColor,
+            UIColor(red: 0.49, green: 0.29, blue: 0.73, alpha: 1.00).cgColor
+        ]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.0)
+
+        let shape = CAShapeLayer()
+        shape.lineWidth = 3
+        shape.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: CGFloat(border)).cgPath
+        shape.strokeColor = UIColor.black.cgColor
+        shape.fillColor = UIColor.clear.cgColor
+        
+        gradient.mask = shape
+
+        self.layer.addSublayer(gradient)
+    }
+}
