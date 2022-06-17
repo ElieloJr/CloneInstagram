@@ -23,11 +23,7 @@ class PerfilViewController: UIViewController {
     
     private lazy var pictureView: UIView = {
         let view = UIView()
-        view.layer.borderColor = UIColor.red.cgColor
-        view.layer.borderWidth = 3
         view.layer.cornerRadius = 70
-        view.clipsToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(pictureImageView)
         
@@ -217,12 +213,7 @@ class PerfilViewController: UIViewController {
     
     private lazy var pictureUserView: UIView = {
         let view = UIView()
-        view.layer.borderColor = UIColor.red.cgColor
-        view.layer.borderWidth = 2
         view.layer.cornerRadius = 20
-        view.clipsToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(pictureUserImageView)
         
         pictureUserImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 4).isActive = true
@@ -257,10 +248,11 @@ class PerfilViewController: UIViewController {
         view.addSubview(zoomUserNameLabel)
         view.addSubview(postImageView)
         
-        pictureUserView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
-        pictureUserView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        pictureUserView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        pictureUserView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        pictureUserView.frame = CGRect(x: view.frame.minX+7,
+                                       y: view.frame.minY+10,
+                                       width: 40,
+                                       height: 40)
+        Add.gradientBorder(with: pictureUserView, border: 20)
         
         zoomUserNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor).isActive = true
         zoomUserNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10).isActive = true
@@ -284,10 +276,10 @@ class PerfilViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = Colors().defautBackground
+        view.backgroundColor = Colors.defautBackground
         
-        navigationItem.title = Titles().userName("nomeDoUser")
-        self.navigationController?.navigationBar.titleTextAttributes = Titles().defaultFont
+        navigationItem.title = Titles.userName("nomeDoUser")
+        self.navigationController?.navigationBar.titleTextAttributes = Titles.defaultFont
         
         publicationsCollectionView.delegate = self
         publicationsCollectionView.dataSource = self
@@ -304,10 +296,11 @@ class PerfilViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        pictureView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        pictureView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 6).isActive = true
-        pictureView.widthAnchor.constraint(equalToConstant: view.frame.width/3).isActive = true
-        pictureView.heightAnchor.constraint(equalToConstant: view.frame.width/3).isActive = true
+        pictureView.frame = CGRect(x: 6,
+                                   y: view.frame.width/4.2,
+                                   width: view.frame.width/3,
+                                   height: view.frame.width/3)
+        Add.gradientBorder(with: pictureView, border: 50)
         
         stackStatistics.centerYAnchor.constraint(equalTo: pictureView.centerYAnchor).isActive = true
         stackStatistics.leadingAnchor.constraint(equalTo: pictureView.trailingAnchor, constant: 14).isActive = true
@@ -399,7 +392,7 @@ extension PerfilViewController: PerfilViewDelegate {
     }
     func configurePage(with user: User) {
         DispatchQueue.main.async {
-            self.navigationItem.title = Titles().userName(user.username)
+            self.navigationItem.title = Titles.userName(user.username)
             
             if let lastName = user.last_name {
                 self.userNameLabel.text = user.first_name + " \(lastName)"

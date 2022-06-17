@@ -39,12 +39,7 @@ class PostViewController: UIViewController {
     
     private lazy var pictureUserView: UIView = {
         let view = UIView()
-        view.layer.borderColor = UIColor.red.cgColor
-        view.layer.borderWidth = 3
         view.layer.cornerRadius = 25
-        view.clipsToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(pictureUserImageView)
         
         pictureUserImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 7).isActive = true
@@ -107,7 +102,6 @@ class PostViewController: UIViewController {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "paperplane"), for: .normal)
         button.tintColor = .label
-//        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -176,9 +170,9 @@ class PostViewController: UIViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = Colors().defautBackground
+        view.backgroundColor = Colors.defautBackground
         
-        self.navigationController?.navigationBar.titleTextAttributes = Titles().feedFont
+        self.navigationController?.navigationBar.titleTextAttributes = Titles.feedFont
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
         
         view.addSubview(pictureUserView)
@@ -196,10 +190,11 @@ class PostViewController: UIViewController {
     }
     
     private func setupConstraints() {
-        pictureUserView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
-        pictureUserView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
-        pictureUserView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        pictureUserView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        pictureUserView.frame = CGRect(x: 10,
+                                   y: view.frame.width/4.2,
+                                   width: 50,
+                                   height: 50)
+        Add.gradientBorder(with: pictureUserView, border: 50)
         
         userNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor).isActive = true
         userNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10).isActive = true

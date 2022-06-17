@@ -31,10 +31,10 @@ class FeedViewController: UIViewController {
     }
     
     func setupView() {
-        view.backgroundColor = Colors().defautBackground
+        view.backgroundColor = Colors.defautBackground
         
-        navigationItem.title = Titles().feedTitle
-        self.navigationController?.navigationBar.titleTextAttributes = Titles().feedFont
+        navigationItem.title = Titles.feedTitle
+        self.navigationController?.navigationBar.titleTextAttributes = Titles.feedFont
         
         feedTableView.delegate = self
         feedTableView.dataSource = self

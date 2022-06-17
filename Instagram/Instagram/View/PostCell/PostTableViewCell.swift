@@ -34,12 +34,7 @@ class PostTableViewCell: UITableViewCell {
     
     private lazy var pictureUserView: UIView = {
         let view = UIView()
-        view.layer.borderColor = UIColor.red.cgColor
-        view.layer.borderWidth = 3
         view.layer.cornerRadius = 25
-        view.clipsToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(pictureUserImageView)
         
         pictureUserImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 7).isActive = true
@@ -174,10 +169,8 @@ class PostTableViewCell: UITableViewCell {
         separatorView.widthAnchor.constraint(equalToConstant: contentView.frame.width).isActive = true
         separatorView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         
-        pictureUserView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 7).isActive = true
-        pictureUserView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 7).isActive = true
-        pictureUserView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        pictureUserView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        pictureUserView.frame = CGRect(x: 7, y: 22, width: 50, height: 50)
+        Add.gradientBorder(with: pictureUserView, border: 25)
         
         userNameLabel.centerYAnchor.constraint(equalTo: pictureUserView.centerYAnchor).isActive = true
         userNameLabel.leadingAnchor.constraint(equalTo: pictureUserView.trailingAnchor, constant: 10).isActive = true
