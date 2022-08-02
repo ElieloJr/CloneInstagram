@@ -8,7 +8,9 @@ Clone do app do Instagram desenvolvido em IOS
         - Conhecer<br>
         - Perfil<br>
         - Post<br>
-- API utilizada
+        - 
+- API utilizada:
+
         https://www.themoviedb.org  
         
 ## Video do App em execução
