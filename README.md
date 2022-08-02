@@ -3,7 +3,7 @@ Clone do app do Instagram desenvolvido em IOS
 
 - Objetivo: Estudar e aprimorar conhecimentos e habilidades com Swift
 - Telas:
--- Feed
+-- Feed<br>
 -- Atividades
 -- Conhecer
 -- Perfil
