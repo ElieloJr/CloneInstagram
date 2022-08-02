@@ -22,4 +22,4 @@ Estudar e aprimorar conhecimentos e habilidades com Swift
         https://www.themoviedb.org  
         
 ### App em execução
-![App Clone Instagram](https://drive.google.com/file/d/1BU0V2JmI7e7UaVZD374tUUQeaAQmPB0j/view)
+![App Clone Instagram]([https://drive.google.com/file/d/1BU0V2JmI7e7UaVZD374tUUQeaAQmPB0j/view](https://github.com/ElieloJr/CloneInstagram/blob/main/Instagram/Instagram/Assets.xcassets/Instagram.gif))
